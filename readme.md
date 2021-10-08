@@ -9,7 +9,7 @@ Funcionalidades atuais:
   - update
   - delete 
 
-![alt](doc/assets/db.png)
+![alt](doc/assets/db2.png)
 
 
 
