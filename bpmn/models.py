@@ -78,3 +78,9 @@ class Lane(models.Model):
 
     def __str__(self):
         return self.name
+
+class Bag(models.Model):
+    name = models.CharField(max_length=255)
+    container = models.ForeignKey(FlowElementsContainer, on_delete=models.CASCADE)
+    activities = models.ManyToManyField(Activity)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, blank=True, null=True) 
