@@ -19,6 +19,22 @@ Próximos passos:
 - [ ] Bag of activities com reasoning do owlready
 - [ ] Abertura/andamento de processos por meio de APIs
 
+Executando o projeto:
+
+- Docker Compose
+  - docker-compose build
+  - docker-compose up 
+
+- Visual Code
+  - Abrir em modo Container
+  - no terminal: ./runDevMode.sh
+
+Usuário Administrador Padrão:
+
+- http://localhost:8000
+- Usuário: admin
+- Senha: admin
+
 
 
 
