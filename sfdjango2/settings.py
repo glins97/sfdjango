@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'bpmn', 
     'kipco',
+    'semantic',
 ]
 
 REST_FRAMEWORK = {
@@ -86,7 +87,11 @@ WSGI_APPLICATION = 'sfdjango2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        #'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'semantic.sqlite3',
+        'OPTIONS': {
+            'timeout': 20,
+        }
     }
 }
 
@@ -133,3 +138,17 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Semantic Module Config
+
+SEMANTIC = {
+    'DATABASE' : {
+        'TYPE': 'relational',
+        'SOURCE_NAME' : 'default'
+    },
+    'OWL_FILES': {
+        'IMPORT_FOLDER': BASE_DIR / './owl_files/',
+        'OWL_PATH_FILE': 'file:/' + str(BASE_DIR / '/owl_files/kipo_s.owl#')
+    }
+}

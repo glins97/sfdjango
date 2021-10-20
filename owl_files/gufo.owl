@@ -1,0 +1,2974 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://purl.org/nemo/gufo#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://purl.org/nemo/gufo#">
+    <Prefix name="" IRI="http://purl.org/nemo/gufo#"/>
+    <Prefix name="dc" IRI="http://purl.org/dc/elements/1.1/"/>
+    <Prefix name="dct" IRI="http://purl.org/dc/terms/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="sdo" IRI="http://schema.org/"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="foaf" IRI="http://xmlns.com/foaf/0.1/"/>
+    <Prefix name="gufo" IRI="http://purl.org/nemo/gufo#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="time" IRI="http://www.w3.org/2006/time#"/>
+    <Prefix name="vann" IRI="http://purl.org/vocab/vann/"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:creator"/>
+        <Literal>Almeida, João Paulo A.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:creator"/>
+        <Literal>Falbo, Ricardo A.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:creator"/>
+        <Literal>Guizzardi, Giancarlo</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:creator"/>
+        <Literal>Sales, Tiago P.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:date"/>
+        <Literal xml:lang="en">2019-11-11</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:title"/>
+        <Literal xml:lang="en">gUFO: A Lightweight Implementation of the Unified Foundational Ontology (UFO)</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dct:rights"/>
+        <Literal xml:lang="en">This work is distributed under Creative Commons Attribution License CC BY 4.0 &lt;https://creativecommons.org/licenses/by/4.0/legalcode&gt;</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="vann:preferredNamespaceUri"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#anyURI">http://purl.org/nemo/gufo#</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal xml:lang="en">The objective of gUFO is to provide a lightweight implementation of the Unified Foundational Ontology (UFO) [1-5] suitable for Semantic Web OWL 2 DL applications. 
+
+Intended users are those implementing UFO-based lightweight ontologies that reuse gUFO by specializing and instantiating its elements.
+
+There are three implications of the use of the term lightweight. First of all, we have employed little expressive means in an effort to retain computational properties for the resulting OWL ontology. Second, we have selected a subset of UFO-A [1, 2] and UFO-B [3] to include here. In particular, there is minimalistic support for UFO-B (only that which is necessary to establish the participation of objects in events and to capture historical dependence between events). Third, a lightweight ontology, differently from a reference ontology, is designed with the purpose of providing an implementation artifact to structure a knowledge base (or knowledge graph). This has driven a number of pragmatic implementation choices which are discussed in comments annotated to the various elements of this implementation. 
+
+The &apos;g&apos; in gUFO stands for gentle. At the same time, &quot;gufo&quot; is the Italian word for &quot;owl&quot;.
+
+For background information on the reference ontology on which this implementation is based, see: 
+
+1. G. Guizzardi, G. Wagner, J. P. A. Almeida, R. S. S. Guizzardi, “Towards ontological foundations for conceptual modeling: The unified foundational ontology (UFO) story,” Applied Ontology (Online), vol. 10, p. 259–271, 2015. &lt;http://dx.doi.org/10.3233/ao-150157&gt;
+2. G. Guizzardi, Ontological Foundations for Structural Conceptual Models,
+PhD Thesis, University of Twente, The Netherlands, 2005. &lt;https://research.utwente.nl/en/publications/ontological-foundations-for-structural-conceptual-models&gt;
+3. G. Guizzardi, G. Wagner, R. A. Falbo, R. S. S. Guizzardi, and J. P. A. Almeida, “Towards Ontological Foundations for the Conceptual Modeling of Events,” in Proc. 32th International Conference, ER 2013, 2013, p. 327–341. &lt;https://doi.org/10.1007/978-3-642-41924-9_27&gt;
+4. G. Guizzardi, C. M. Fonseca, A. B. Benevides, J. P. A. Almeida, D. Porello, T. P. Sales, “Endurant Types in Ontology-Driven Conceptual Modeling: Towards OntoUML 2.0,” in Conceptual Modeling – 37th International Conference, ER 2018, 2018, p. 136–150. &lt;https://doi.org/10.1007/978-3-030-00847-5_12&gt;
+5. C. M. Fonseca, D. Porello, G. Guizzardi, J. P. A. Almeida, and N. Guarino, “Relations in ontology-driven conceptual modeling,” in 38th International Conference on Conceptual Modeling (ER 2019), LNCS, 2019. v. 11788, 2019, p. 1–15. &lt;http://dx.doi.org/10.1007/978-3-030-33223-5_4&gt;
+
+Cite this work as: 
+
+J. P. A. Almeida, G. Guizzardi, T. P. Sales, R. A. Falbo, &quot;gUFO: A Lightweight Implementation of the Unified Foundational Ontology (UFO)&quot;, 2019, http://purl.org/nemo/doc/gufo
+
+For the source repository, see: &lt;https://github.com/nemo-ufes/gufo&gt;</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="AbstractIndividual"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="AbstractIndividualType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="AntiRigidType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Aspect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Category"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Collection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ComparativeRelationshipType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ConcreteIndividual"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ConcreteIndividualType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Endurant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="EndurantType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Event"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="EventType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ExtrinsicAspect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ExtrinsicMode"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="FixedCollection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="FunctionalComplex"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Individual"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="IntrinsicAspect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="IntrinsicMode"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Kind"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="MaterialRelationshipType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Mixin"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="NonRigidType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="NonSortal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Object"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Participation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Phase"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="PhaseMixin"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Quality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="QualityValue"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="QualityValueAttributionSituation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Quantity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="RelationshipType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Relator"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="RigidType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Role"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="RoleMixin"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="SemiRigidType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Situation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="SituationType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Sortal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="SubKind"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="TemporaryConstitutionSituation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="TemporaryInstantiationSituation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="TemporaryParthoodSituation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="TemporaryRelationshipSituation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Type"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="VariableCollection"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="time:Instant"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="broughtAbout"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="categorizes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="concernsConstitutedEndurant"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="concernsNonRigidType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="concernsQualityType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="concernsReifiedQualityValue"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="concernsRelatedEndurant"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="concernsRelationshipType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="concernsTemporaryWhole"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="constitutes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="contributedToTrigger"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="externallyDependsOn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasAssociatedQualityValueType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasBeginPoint"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasEndPoint"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasReifiedQualityValue"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="historicallyDependsOn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="inheresIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isAspectProperPartOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isCollectionMemberOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isComponentOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isDerivedFrom"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isEventProperPartOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isObjectProperPartOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isProperPartOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isSituationProperPartOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isSubCollectionOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isSubQuantityOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="manifestedIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="mediates"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="participatedIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="partitions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="standsIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="standsInQualifiedAttribution"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="standsInQualifiedConstitution"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="standsInQualifiedInstantiation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="standsInQualifiedParthood"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="standsInQualifiedRelationship"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="wasCreatedIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="wasTerminatedIn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="concernsQualityValue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasBeginPointInXSDDate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasBeginPointInXSDDateTimeStamp"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasEndPointInXSDDate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasEndPointInXSDDateTimeStamp"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasQualityValue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasValueComponent"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dc:contributor"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dc:creator"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dc:date"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dc:rights"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dc:title"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dct:rights"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="vann:preferredNamespaceUri"/>
+    </Declaration>
+    <Declaration>
+        <Datatype abbreviatedIRI="xsd:date"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="AbstractIndividual"/>
+        <Class IRI="Individual"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="AbstractIndividualType"/>
+        <Class IRI="Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="AntiRigidType"/>
+        <Class IRI="NonRigidType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Aspect"/>
+        <Class IRI="Endurant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Category"/>
+        <Class IRI="NonSortal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Category"/>
+        <Class IRI="RigidType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Collection"/>
+        <Class IRI="Object"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ComparativeRelationshipType"/>
+        <Class IRI="RelationshipType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ConcreteIndividual"/>
+        <Class IRI="Individual"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ConcreteIndividualType"/>
+        <Class IRI="Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Endurant"/>
+        <Class IRI="ConcreteIndividual"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="EndurantType"/>
+        <Class IRI="ConcreteIndividualType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Event"/>
+        <Class IRI="ConcreteIndividual"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="EventType"/>
+        <Class IRI="ConcreteIndividualType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ExtrinsicAspect"/>
+        <Class IRI="Aspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ExtrinsicMode"/>
+        <Class IRI="ExtrinsicAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ExtrinsicMode"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="externallyDependsOn"/>
+            <Class IRI="ConcreteIndividual"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ExtrinsicMode"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="inheresIn"/>
+            <Class IRI="ConcreteIndividual"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="FixedCollection"/>
+        <Class IRI="Collection"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="FunctionalComplex"/>
+        <Class IRI="Object"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="IntrinsicAspect"/>
+        <Class IRI="Aspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="IntrinsicAspect"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="inheresIn"/>
+            <Class IRI="ConcreteIndividual"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="IntrinsicMode"/>
+        <Class IRI="IntrinsicAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Kind"/>
+        <Class IRI="RigidType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Kind"/>
+        <Class IRI="Sortal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="MaterialRelationshipType"/>
+        <Class IRI="RelationshipType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Mixin"/>
+        <Class IRI="NonSortal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Mixin"/>
+        <Class IRI="SemiRigidType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="NonRigidType"/>
+        <Class IRI="EndurantType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="NonSortal"/>
+        <Class IRI="EndurantType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Object"/>
+        <Class IRI="Endurant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Participation"/>
+        <Class IRI="Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Phase"/>
+        <Class IRI="AntiRigidType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Phase"/>
+        <Class IRI="Sortal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="PhaseMixin"/>
+        <Class IRI="AntiRigidType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="PhaseMixin"/>
+        <Class IRI="NonSortal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Quality"/>
+        <Class IRI="IntrinsicAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="QualityValue"/>
+        <Class IRI="AbstractIndividual"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="QualityValueAttributionSituation"/>
+        <Class IRI="Situation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="QualityValueAttributionSituation"/>
+        <ObjectUnionOf>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="concernsReifiedQualityValue"/>
+                <Class IRI="QualityValue"/>
+            </ObjectExactCardinality>
+            <DataExactCardinality cardinality="1">
+                <DataProperty IRI="concernsQualityValue"/>
+            </DataExactCardinality>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="QualityValueAttributionSituation"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="concernsQualityType"/>
+            <Class IRI="EndurantType"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="QualityValueAttributionSituation"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectInverseOf>
+                <ObjectProperty IRI="standsInQualifiedAttribution"/>
+            </ObjectInverseOf>
+            <Class IRI="Endurant"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Quantity"/>
+        <Class IRI="Object"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="RelationshipType"/>
+        <Class IRI="Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Relator"/>
+        <Class IRI="ExtrinsicAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Relator"/>
+        <ObjectMinCardinality cardinality="2">
+            <ObjectProperty IRI="mediates"/>
+            <Class IRI="Endurant"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="RigidType"/>
+        <Class IRI="EndurantType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Role"/>
+        <Class IRI="AntiRigidType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Role"/>
+        <Class IRI="Sortal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="RoleMixin"/>
+        <Class IRI="AntiRigidType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="RoleMixin"/>
+        <Class IRI="NonSortal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="SemiRigidType"/>
+        <Class IRI="NonRigidType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Situation"/>
+        <Class IRI="ConcreteIndividual"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="SituationType"/>
+        <Class IRI="ConcreteIndividualType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Sortal"/>
+        <Class IRI="EndurantType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="SubKind"/>
+        <Class IRI="RigidType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="SubKind"/>
+        <Class IRI="Sortal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="TemporaryConstitutionSituation"/>
+        <Class IRI="Situation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="TemporaryConstitutionSituation"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="concernsConstitutedEndurant"/>
+            <Class IRI="Object"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="TemporaryConstitutionSituation"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectInverseOf>
+                <ObjectProperty IRI="standsInQualifiedConstitution"/>
+            </ObjectInverseOf>
+            <Class IRI="Object"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="TemporaryInstantiationSituation"/>
+        <Class IRI="Situation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="TemporaryInstantiationSituation"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="concernsNonRigidType"/>
+            <Class IRI="NonRigidType"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="TemporaryInstantiationSituation"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectInverseOf>
+                <ObjectProperty IRI="standsInQualifiedInstantiation"/>
+            </ObjectInverseOf>
+            <Class IRI="Endurant"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="TemporaryParthoodSituation"/>
+        <Class IRI="Situation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="TemporaryParthoodSituation"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="concernsTemporaryWhole"/>
+            <Class IRI="Endurant"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="TemporaryParthoodSituation"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectInverseOf>
+                <ObjectProperty IRI="standsInQualifiedParthood"/>
+            </ObjectInverseOf>
+            <Class IRI="Endurant"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="TemporaryRelationshipSituation"/>
+        <Class IRI="Situation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="TemporaryRelationshipSituation"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="concernsRelatedEndurant"/>
+            <Class IRI="Endurant"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="TemporaryRelationshipSituation"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="concernsRelationshipType"/>
+            <Class IRI="RelationshipType"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="TemporaryRelationshipSituation"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectInverseOf>
+                <ObjectProperty IRI="standsInQualifiedRelationship"/>
+            </ObjectInverseOf>
+            <Class IRI="Endurant"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="VariableCollection"/>
+        <Class IRI="Collection"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="time:Instant"/>
+        <Class IRI="AbstractIndividual"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="AbstractIndividual"/>
+        <Class IRI="ConcreteIndividual"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="AbstractIndividualType"/>
+        <Class IRI="ConcreteIndividualType"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="AbstractIndividualType"/>
+        <Class IRI="RelationshipType"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="AntiRigidType"/>
+        <Class IRI="SemiRigidType"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="Aspect"/>
+        <Class IRI="Object"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="Collection"/>
+        <Class IRI="FunctionalComplex"/>
+        <Class IRI="Quantity"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="ComparativeRelationshipType"/>
+        <Class IRI="MaterialRelationshipType"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="ConcreteIndividualType"/>
+        <Class IRI="RelationshipType"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="Endurant"/>
+        <Class IRI="Event"/>
+        <Class IRI="Situation"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="EndurantType"/>
+        <Class IRI="EventType"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="EndurantType"/>
+        <Class IRI="SituationType"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="EventType"/>
+        <Class IRI="SituationType"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="ExtrinsicAspect"/>
+        <Class IRI="IntrinsicAspect"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="ExtrinsicMode"/>
+        <Class IRI="Relator"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="FixedCollection"/>
+        <Class IRI="VariableCollection"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="Individual"/>
+        <Class IRI="Type"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="IntrinsicMode"/>
+        <Class IRI="Quality"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="Kind"/>
+        <Class IRI="SubKind"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="NonRigidType"/>
+        <Class IRI="RigidType"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="NonSortal"/>
+        <Class IRI="Sortal"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="Phase"/>
+        <Class IRI="Role"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="PhaseMixin"/>
+        <Class IRI="RoleMixin"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="QualityValueAttributionSituation"/>
+        <Class IRI="TemporaryConstitutionSituation"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="QualityValueAttributionSituation"/>
+        <Class IRI="TemporaryInstantiationSituation"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="QualityValueAttributionSituation"/>
+        <Class IRI="TemporaryParthoodSituation"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="QualityValueAttributionSituation"/>
+        <Class IRI="TemporaryRelationshipSituation"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="TemporaryConstitutionSituation"/>
+        <Class IRI="TemporaryInstantiationSituation"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="TemporaryConstitutionSituation"/>
+        <Class IRI="TemporaryRelationshipSituation"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="TemporaryInstantiationSituation"/>
+        <Class IRI="TemporaryParthoodSituation"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="TemporaryInstantiationSituation"/>
+        <Class IRI="TemporaryRelationshipSituation"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="TemporaryParthoodSituation"/>
+        <Class IRI="TemporaryRelationshipSituation"/>
+    </DisjointClasses>
+    <DisjointUnion>
+        <Class IRI="Aspect"/>
+        <Class IRI="ExtrinsicAspect"/>
+        <Class IRI="IntrinsicAspect"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Class IRI="Collection"/>
+        <Class IRI="FixedCollection"/>
+        <Class IRI="VariableCollection"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Class IRI="ConcreteIndividual"/>
+        <Class IRI="Endurant"/>
+        <Class IRI="Event"/>
+        <Class IRI="Situation"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Class IRI="Endurant"/>
+        <Class IRI="Aspect"/>
+        <Class IRI="Object"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Class IRI="EndurantType"/>
+        <Class IRI="NonRigidType"/>
+        <Class IRI="RigidType"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Class IRI="EndurantType"/>
+        <Class IRI="NonSortal"/>
+        <Class IRI="Sortal"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Class IRI="ExtrinsicAspect"/>
+        <Class IRI="ExtrinsicMode"/>
+        <Class IRI="Relator"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Class IRI="Individual"/>
+        <Class IRI="AbstractIndividual"/>
+        <Class IRI="ConcreteIndividual"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Class IRI="IntrinsicAspect"/>
+        <Class IRI="IntrinsicMode"/>
+        <Class IRI="Quality"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Class IRI="NonRigidType"/>
+        <Class IRI="AntiRigidType"/>
+        <Class IRI="SemiRigidType"/>
+    </DisjointUnion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="isAspectProperPartOf"/>
+        <ObjectProperty IRI="isProperPartOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="isCollectionMemberOf"/>
+        <ObjectProperty IRI="isObjectProperPartOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="isComponentOf"/>
+        <ObjectProperty IRI="isObjectProperPartOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="isEventProperPartOf"/>
+        <ObjectProperty IRI="isProperPartOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="isObjectProperPartOf"/>
+        <ObjectProperty IRI="isProperPartOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="isSituationProperPartOf"/>
+        <ObjectProperty IRI="isProperPartOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="isSubCollectionOf"/>
+        <ObjectProperty IRI="isObjectProperPartOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="isSubQuantityOf"/>
+        <ObjectProperty IRI="isObjectProperPartOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="partitions"/>
+        <ObjectProperty IRI="categorizes"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="standsInQualifiedAttribution"/>
+        <ObjectProperty IRI="standsIn"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="standsInQualifiedConstitution"/>
+        <ObjectProperty IRI="standsIn"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="standsInQualifiedInstantiation"/>
+        <ObjectProperty IRI="standsIn"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="standsInQualifiedParthood"/>
+        <ObjectProperty IRI="standsIn"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="standsInQualifiedRelationship"/>
+        <ObjectProperty IRI="standsIn"/>
+    </SubObjectPropertyOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="concernsNonRigidType"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="concernsQualityType"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="concernsReifiedQualityValue"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="concernsRelatedEndurant"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="concernsRelationshipType"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="concernsTemporaryWhole"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="inheresIn"/>
+    </FunctionalObjectProperty>
+    <AsymmetricObjectProperty>
+        <ObjectProperty IRI="inheresIn"/>
+    </AsymmetricObjectProperty>
+    <AsymmetricObjectProperty>
+        <ObjectProperty IRI="mediates"/>
+    </AsymmetricObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="historicallyDependsOn"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="isAspectProperPartOf"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="isEventProperPartOf"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="isObjectProperPartOf"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="isProperPartOf"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="isSubCollectionOf"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="isSubQuantityOf"/>
+    </TransitiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="externallyDependsOn"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="inheresIn"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="mediates"/>
+    </IrreflexiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="broughtAbout"/>
+        <Class IRI="Event"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="categorizes"/>
+        <ObjectIntersectionOf>
+            <Class IRI="Type"/>
+            <ObjectComplementOf>
+                <Class IRI="AbstractIndividualType"/>
+            </ObjectComplementOf>
+            <ObjectComplementOf>
+                <Class IRI="ConcreteIndividualType"/>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="concernsConstitutedEndurant"/>
+        <Class IRI="TemporaryConstitutionSituation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="concernsNonRigidType"/>
+        <Class IRI="TemporaryInstantiationSituation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="concernsQualityType"/>
+        <Class IRI="QualityValueAttributionSituation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="concernsReifiedQualityValue"/>
+        <Class IRI="QualityValueAttributionSituation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="concernsRelatedEndurant"/>
+        <Class IRI="TemporaryRelationshipSituation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="concernsRelationshipType"/>
+        <Class IRI="TemporaryRelationshipSituation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="concernsTemporaryWhole"/>
+        <Class IRI="TemporaryParthoodSituation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="constitutes"/>
+        <Class IRI="ConcreteIndividual"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="contributedToTrigger"/>
+        <Class IRI="Situation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="externallyDependsOn"/>
+        <Class IRI="ExtrinsicMode"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasAssociatedQualityValueType"/>
+        <Class IRI="EndurantType"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasBeginPoint"/>
+        <Class IRI="ConcreteIndividual"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasEndPoint"/>
+        <Class IRI="ConcreteIndividual"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasReifiedQualityValue"/>
+        <Class IRI="ConcreteIndividual"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="historicallyDependsOn"/>
+        <Class IRI="ConcreteIndividual"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="inheresIn"/>
+        <Class IRI="Aspect"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isAspectProperPartOf"/>
+        <Class IRI="Aspect"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isCollectionMemberOf"/>
+        <Class IRI="Object"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isComponentOf"/>
+        <Class IRI="Object"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isDerivedFrom"/>
+        <ObjectUnionOf>
+            <Class IRI="ComparativeRelationshipType"/>
+            <Class IRI="MaterialRelationshipType"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isEventProperPartOf"/>
+        <Class IRI="Event"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isObjectProperPartOf"/>
+        <Class IRI="Object"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isProperPartOf"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isSituationProperPartOf"/>
+        <Class IRI="Situation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isSubCollectionOf"/>
+        <Class IRI="Collection"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isSubQuantityOf"/>
+        <Class IRI="Quantity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="manifestedIn"/>
+        <Class IRI="Aspect"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="mediates"/>
+        <Class IRI="Relator"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="participatedIn"/>
+        <Class IRI="Object"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="partitions"/>
+        <ObjectIntersectionOf>
+            <Class IRI="Type"/>
+            <ObjectComplementOf>
+                <Class IRI="AbstractIndividualType"/>
+            </ObjectComplementOf>
+            <ObjectComplementOf>
+                <Class IRI="ConcreteIndividualType"/>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="standsIn"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="standsInQualifiedAttribution"/>
+        <Class IRI="Endurant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="standsInQualifiedConstitution"/>
+        <Class IRI="Endurant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="standsInQualifiedInstantiation"/>
+        <Class IRI="Endurant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="standsInQualifiedParthood"/>
+        <Class IRI="Endurant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="standsInQualifiedRelationship"/>
+        <Class IRI="Endurant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="wasCreatedIn"/>
+        <Class IRI="Endurant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="wasTerminatedIn"/>
+        <Class IRI="Endurant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="broughtAbout"/>
+        <Class IRI="Situation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="categorizes"/>
+        <Class IRI="Type"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="concernsConstitutedEndurant"/>
+        <Class IRI="Endurant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="concernsNonRigidType"/>
+        <Class IRI="NonRigidType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="concernsQualityType"/>
+        <Class IRI="EndurantType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="concernsReifiedQualityValue"/>
+        <Class IRI="QualityValue"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="concernsRelatedEndurant"/>
+        <Class IRI="Endurant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="concernsRelationshipType"/>
+        <Class IRI="RelationshipType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="concernsTemporaryWhole"/>
+        <Class IRI="Endurant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="constitutes"/>
+        <Class IRI="ConcreteIndividual"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="contributedToTrigger"/>
+        <Class IRI="Event"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="externallyDependsOn"/>
+        <Class IRI="Endurant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasAssociatedQualityValueType"/>
+        <Class IRI="AbstractIndividualType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasBeginPoint"/>
+        <Class abbreviatedIRI="time:Instant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasEndPoint"/>
+        <Class abbreviatedIRI="time:Instant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasReifiedQualityValue"/>
+        <Class IRI="QualityValue"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="historicallyDependsOn"/>
+        <Class IRI="ConcreteIndividual"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="inheresIn"/>
+        <Class IRI="ConcreteIndividual"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isAspectProperPartOf"/>
+        <Class IRI="Aspect"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isCollectionMemberOf"/>
+        <Class IRI="Collection"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isComponentOf"/>
+        <Class IRI="FunctionalComplex"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isDerivedFrom"/>
+        <Class IRI="EndurantType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isEventProperPartOf"/>
+        <Class IRI="Event"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isObjectProperPartOf"/>
+        <Class IRI="Object"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isProperPartOf"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isSituationProperPartOf"/>
+        <Class IRI="Situation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isSubCollectionOf"/>
+        <Class IRI="Collection"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isSubQuantityOf"/>
+        <Class IRI="Quantity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="manifestedIn"/>
+        <Class IRI="Event"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="mediates"/>
+        <Class IRI="Endurant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="participatedIn"/>
+        <Class IRI="Event"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="standsIn"/>
+        <Class IRI="Situation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="standsInQualifiedAttribution"/>
+        <Class IRI="QualityValueAttributionSituation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="standsInQualifiedConstitution"/>
+        <Class IRI="TemporaryConstitutionSituation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="standsInQualifiedInstantiation"/>
+        <Class IRI="TemporaryInstantiationSituation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="standsInQualifiedParthood"/>
+        <Class IRI="TemporaryParthoodSituation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="standsInQualifiedRelationship"/>
+        <Class IRI="TemporaryRelationshipSituation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="wasCreatedIn"/>
+        <Class IRI="Event"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="wasTerminatedIn"/>
+        <Class IRI="Event"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hasBeginPointInXSDDate"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hasBeginPointInXSDDateTimeStamp"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hasEndPointInXSDDate"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hasEndPointInXSDDateTimeStamp"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="concernsQualityValue"/>
+        <Class IRI="QualityValueAttributionSituation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasBeginPointInXSDDate"/>
+        <Class IRI="ConcreteIndividual"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasBeginPointInXSDDateTimeStamp"/>
+        <Class IRI="ConcreteIndividual"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasEndPointInXSDDate"/>
+        <Class IRI="ConcreteIndividual"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasEndPointInXSDDateTimeStamp"/>
+        <Class IRI="ConcreteIndividual"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasQualityValue"/>
+        <Class IRI="ConcreteIndividual"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasValueComponent"/>
+        <Class IRI="QualityValue"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="hasBeginPointInXSDDate"/>
+        <Datatype abbreviatedIRI="xsd:date"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hasBeginPointInXSDDateTimeStamp"/>
+        <Datatype abbreviatedIRI="xsd:dateTimeStamp"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hasEndPointInXSDDate"/>
+        <Datatype abbreviatedIRI="xsd:date"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hasEndPointInXSDDateTimeStamp"/>
+        <Datatype abbreviatedIRI="xsd:dateTimeStamp"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>AbstractIndividual</IRI>
+        <Literal xml:lang="en">A gufo:Individual that does not exist in space-time in the same way as a gufo:ConcreteIndividual does. A gufo:AbstractIndividual has no spatiotemporal qualities in its own right. Hence, it does not make sense to ask how much space it now occupies (Gideon, 2018) and when it was created or destroyed.
+
+Examples include the number ten, the null set, and the proposition that &apos;Obama was the president of the United States&apos;.
+
+Rosen, Gideon, &quot;Abstract Objects&quot;, The Stanford Encyclopedia of Philosophy (Winter 2018 Edition), Edward N. Zalta (ed.), &lt;https://plato.stanford.edu/archives/win2018/entries/abstract-objects/&gt;</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>AbstractIndividual</IRI>
+        <Literal xml:lang="en">AbstractIndividual</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>AbstractIndividualType</IRI>
+        <Literal xml:lang="en">A gufo:Type whose instances are abstract individuals.
+
+Instances of gufo:AbstractIndividualType are subclasses of gufo:AbstractIndividual.
+
+Examples include the types &quot;NaturalNumber&quot;, &quot;Set&quot;, &quot;Proposition&quot;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>AbstractIndividualType</IRI>
+        <Literal xml:lang="en">AbstractIndividualType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>AntiRigidType</IRI>
+        <Literal xml:lang="en">A gufo:NonRigidType that applies contingently to all its instances (see Guizzardi, 2005, chapter 4).
+
+Examples include the gufo:Phase &quot;Child&quot;, the gufo:PhaseMixin &quot;InfantAnimal&quot;, the gufo:Role &quot;Student&quot;, and the gufo:RoleMixin &quot;Customer&quot;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>AntiRigidType</IRI>
+        <Literal xml:lang="en">AntiRigidType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Aspect</IRI>
+        <Literal xml:lang="en">A gufo:Endurant that depends on at least one other concrete individual for its existence. A gufo:Aspect is a characteristic or trait of a concrete individual that is itself conceived as an individual. 
+
+Examples include: intrinsic physical aspects, such as the Moon&apos;s mass, Lassie&apos;s fur color; mental dispositions, such as Bob&apos;s math skills, his belief that the number one is odd; as well as relational aspects, such as John&apos;s love for Mary and the marriage between John and Mary. 
+
+The specific sort of existential dependence connecting aspects to their bearers is called inherence.
+
+Corresponds to &quot;Moment&quot; in Guizzardi (2005). 
+
+Also termed &quot;property instance&quot;, &quot;particularized property&quot;, &quot;individual accident&quot;, or &quot;(variable) trope&quot; in the philosophical literature.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Aspect</IRI>
+        <Literal xml:lang="en">Aspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Category</IRI>
+        <Literal xml:lang="en">A gufo:EndurantType that is both non-sortal and rigid. It captures essential properties that apply to instances of different kinds.
+
+For example, &quot;PhysicalObject&quot; may be considered a gufo:Category, encompassing objects such as cars, planets, trees. &quot;Agent&quot; may be a gufo:Category that classifies both people and organizations.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Category</IRI>
+        <Literal xml:lang="en">Category</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Collection</IRI>
+        <Literal xml:lang="en">A complex gufo:Object whose parts (the members of the collection) have a uniform structure (i.e., members are conceived as playing the same role in the collection). Collections may have a fixed or variable membership, which can be asserted using gufo:FixedCollection and gufo:VariableCollection respectively.
+
+Examples include a deck of cards, a pile of bricks, a forest (conceived as a collection of trees), and a group of people.
+
+Collections in many cases constitute a functional complex. For example, a pile of bricks may constitute a wall, a group of people may constitute a football team.
+
+A gufo:Collection may be decomposed into &quot;smaller&quot; collections. For instance, a group of people may be decomposed into a group of English speakers and a group of Italian speakers. Sub collections may or may not share members among them.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Collection</IRI>
+        <Literal xml:lang="en">Collection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>ComparativeRelationshipType</IRI>
+        <Literal xml:lang="en">A gufo:RelationshipType derived from intrinsic aspects of the related entities.
+
+For example, &quot;heavierThan&quot;, &quot;olderThan&quot;. 
+
+For a gufo:ComparativeRelationshipType it is recommended to identify the types of intrinsic aspects from which it is derived (see gufo:isDerivedFrom). For example &quot;heavierThan&quot; is derived from the &quot;Weight&quot; quality type.
+
+Note that, in the case of relationships that may change in different circumstances or times, the use of a qualified relation pattern enables indicating the period of time in which the relationship holds. See gufo:TemporaryRelationshipSituation.
+
+Corresponds to &quot;comparative formal relation&quot; in Guizzardi (2005) and &quot;Comparative Relation&quot; in Fonseca et al. (2019).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ComparativeRelationshipType</IRI>
+        <Literal xml:lang="en">ComparativeRelationshipType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>ComparativeRelationshipType</IRI>
+        <IRI>isDerivedFrom</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>ConcreteIndividual</IRI>
+        <Literal xml:lang="en">A gufo:Individual that exists in space-time. 
+
+Concrete individuals comprise not only object-like entities (a car, a mountain, a person, a marriage, a belief), but also events (a business meeting, a soccer match) and situations (the situation in which a person weighs 80 kilograms, the situation in which a bank account is overdrawn).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ConcreteIndividual</IRI>
+        <Literal xml:lang="en">ConcreteIndividual</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>ConcreteIndividualType</IRI>
+        <Literal xml:lang="en">A gufo:Type whose instances are concrete individuals.
+
+Instances of gufo:ConcreteIndividualType are subclasses of gufo:ConcreteIndividual.
+
+Examples include the gufo:Kind &quot;Person&quot;, the gufo:Category &quot;Physical Object&quot;, the gufo:EventType &quot;Business Meeting&quot;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ConcreteIndividualType</IRI>
+        <Literal xml:lang="en">ConcreteIndividualType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Endurant</IRI>
+        <Literal xml:lang="en">A gufo:ConcreteIndividual that endures in time and may change qualitatively while keeping its identity. 
+
+Examples include: ordinary objects of everyday experience, such as a person, a house, and a car; reified relationships, such as a marriage, a rental contract, and a person&apos;s love for another; and existentially-dependent aspects of objects, such as a car&apos;s weight, a person&apos;s language skills, and a house&apos;s color. 
+
+Also termed &quot;continuant&quot; in the philosophical literature.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Endurant</IRI>
+        <Literal xml:lang="en">Endurant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>EndurantType</IRI>
+        <Literal xml:lang="en">A gufo:Type whose instances are endurants. 
+
+Instances of gufo:EndurantType are subclasses of gufo:Endurant.
+
+Examples include the object kind &quot;Person&quot;, the phase &quot;Child&quot;, the relator kind &quot;Marriage&quot;.
+
+See Guizzardi et al. (2018) for details concerning the taxonomy of endurant types included here.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>EndurantType</IRI>
+        <Literal xml:lang="en">EndurantType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Event</IRI>
+        <Literal xml:lang="en">A gufo:ConcreteIndividual that &apos;occurs&apos; or &apos;happens&apos; in time. They may be instantaneous or long-running. Events are those &quot;things that happen to or are performed by&quot; (Casati and Varzi, 2015) endurants. 
+
+Examples include actions and processes, such as a business meeting, a communicative act, a soccer match, a goal kick, the clicking of a mouse button; as well as natural occurrences such as an earthquake, the fall of the meteor that caused the extinction of the dinosaurs.
+
+Also termed &quot;happening&quot;, &quot;occurrence&quot;, &quot;perdurant&quot; or &quot;occurrent&quot; in the philosophical literature.
+
+Casati, R. &amp; Varzi, A. (2015). Events. In E.N. Zalta (Ed.), The Stanford Encyclopedia of Philosophy (Winter 2015 ed.). 19 Metaphysics Research Lab, Stanford University. https://plato.stanford.edu/archives/win2015/entries/events/</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Event</IRI>
+        <Literal xml:lang="en">Event</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>Event</IRI>
+        <IRI>participatedIn</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>EventType</IRI>
+        <Literal xml:lang="en">A gufo:Type whose instances are events.
+
+Instances of gufo:EventType are subclasses of gufo:Event.
+
+Examples include &quot;Business Meeting&quot;, &quot;Birth&quot;, &quot;Musical Performance&quot;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>EventType</IRI>
+        <Literal xml:lang="en">EventType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>ExtrinsicAspect</IRI>
+        <Literal xml:lang="en">A gufo:Aspect that depends on one or more concrete individuals.
+
+Extrinsic (or &quot;relational&quot;) aspects are reified relationships, e.g., John and Mary&apos;s marriage, Mary&apos;s employment contract at Nasa, or parts of those relationships, e.g., John&apos;s obligations towards Mary in the scope of the marriage, Mary&apos;s reciprocal claims, Mary&apos;s obligations towards John, John&apos;s reciprocal claims. Extrinsic aspects can also be reified one-sided relationships, e.g., John&apos;s admiration for Obama (which depends on Obama but does not characterize him).
+
+Corresponds to &quot;Extrinsic Moment&quot; in Fonseca et al (2019). Encompasses &quot;Externally Depedent Mode&quot;, &quot;Qua Individual&quot; and &quot;Relator&quot; in Guizzardi (2005).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ExtrinsicAspect</IRI>
+        <Literal xml:lang="en">ExtrinsicAspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ExtrinsicMode</IRI>
+        <Literal xml:lang="en">ExtrinsicMode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>ExtrinsicMode</IRI>
+        <IRI>externallyDependsOn</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>ExtrinsicMode</IRI>
+        <IRI>inheresIn</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>ExtrinsicMode</IRI>
+        <Literal xml:lang="en">A gufo:ExtrinsicAspect that inheres in a concrete individual and depends on others for its existence.
+
+A gufo:ExtrinsicMode can be understood as a reified one-sided relationship, such as John&apos;s admiration for Mary.
+
+Corresponds to &quot;Extrinsic Moment&quot; in Fonseca et al (2019). Encompasses what &quot;Externally Dependent Mode&quot;, &quot;Qua Individual&quot; and &quot;Relator&quot; in Guizzardi (2005).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>FixedCollection</IRI>
+        <Literal xml:lang="en">A gufo:Collection for which no change in membership is possible.
+
+Such a collection obeys an extensional principle of identity, i.e., two fixed collections are the same if, and only if, they have the same members.
+
+Consider, for example, a group of people understood as a gufo:FixedCollection. In this case, any change in the membership of the group (e.g., the addition of one person) would in fact create a different group of people. In this case, the gufo:FixedCollection may be contrasted with the complexes they constitute. For instance, The Beatles (the band conceived as a gufo:FunctionalComplex) was in a certain circumstance constituted by the collection {John, Paul, George, Pete} and in another one constituted by the collection {John, Paul, George, Ringo}. The replacement of Pete Best by Ringo Star does not alter the identity of the band, but creates a  different group of people.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>FixedCollection</IRI>
+        <Literal xml:lang="en">FixedCollection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>FixedCollection</IRI>
+        <IRI>isCollectionMemberOf</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>FixedCollection</IRI>
+        <IRI>isSubCollectionOf</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>FunctionalComplex</IRI>
+        <IRI>isComponentOf</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>FunctionalComplex</IRI>
+        <Literal xml:lang="en">A complex gufo:Object whose parts (components) play different roles in its composition. 
+
+For example, a person could be considered a gufo:FunctionalComplex with the various organs (heart, brain, lungs, etc.) playing different roles. Another example is a scrum team, which is composed by people playing the roles of scrum master, product owner, developer, etc.
+
+To explicitly capture temporary components, use gufo:TemporaryParthoodSituation.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>FunctionalComplex</IRI>
+        <Literal xml:lang="en">FunctionalComplex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>FunctionalComplex</IRI>
+        <IRI>TemporaryParthoodSituation</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Individual</IRI>
+        <Literal xml:lang="en">An entity that (unlike a gufo:Type) cannot be instantiated.
+
+Individuals may be either concrete (e.g., the Earth, Mick Jagger, Brazil, the 1985 Mexico City Earthquake) or abstract (e.g., the number two, the proposition that &apos;three is a prime number&apos;).
+
+Also known as &quot;particular&quot; in the philosophical literature.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Individual</IRI>
+        <Literal xml:lang="en">Individual</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>IntrinsicAspect</IRI>
+        <Literal xml:lang="en">A gufo:Aspect that depends on a single concrete individual in which it inheres. 
+
+Examples include intrinsic physical aspects, such as the Moon&apos;s mass, Lassie&apos;s fur color; the fragility of John Lennon&apos;s glasses; mental dispositions, such as Bob&apos;s math skills, his belief that the number one is odd.
+
+A gufo:IntrinsicAspect is classified as a gufo:Quality (e.g., an apple&apos;s weight, the height of the Statue of Liberty) if it is measurable by a certain value space, or as a gufo:IntrinsicMode (e.g. Bob&apos;s belief that the Eiffel Tower is in Paris) otherwise.
+
+Corresponds to &quot;Instrinsic Moment&quot; in Guizzardi (2005). Different from Guizzardi (2005), here we consider that aspects can inhere in concrete individuals in general, and not only in endurants.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>IntrinsicAspect</IRI>
+        <Literal xml:lang="en">IntrinsicAspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>IntrinsicAspect</IRI>
+        <IRI>inheresIn</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>IntrinsicMode</IRI>
+        <Literal xml:lang="en">IntrinsicMode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>IntrinsicMode</IRI>
+        <Literal xml:lang="en">A gufo:IntrinsicAspect that is not measurable.
+
+For example, Bob&apos;s belief that the Eiffel Tower is in Paris, his math skills, his headache.
+
+Corresponds to &quot;Mode&quot; in Guizzardi (2005).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Kind</IRI>
+        <Literal xml:lang="en">A gufo:EndurantType that is both sortal and rigid. It provides a uniform principle of identity for its instances. Every gufo:Endurant instantiates one and only one gufo:Kind. 
+
+Examples include kinds of ordinary objects of everyday experience, such as: &quot;Person&quot;, &quot;House&quot;, &quot;Car&quot;; kinds of relators, such as &quot;Marriage&quot;, &quot;RentalContract&quot;; kinds of existentially-dependent aspects of objects, such as &quot;Weight&quot;, &quot;Belief&quot;, &quot;Vulnerability&quot;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Kind</IRI>
+        <Literal xml:lang="en">Kind</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>MaterialRelationshipType</IRI>
+        <Literal xml:lang="en">A gufo:RelationshipType derived from extrinsic aspects of the related entities.
+
+For example, &quot;marriedWith&quot;, &quot;employedBy&quot;, &quot;enrolledIn&quot;, &quot;admires&quot;. 
+
+For a gufo:MaterialRelationshipType it is recommended to identify the type of extrinsic aspect from which the material relationship type is derived (see gufo:isDerivedFrom). For example &quot;marriedWith&quot; can be derived from the &quot;Marriage&quot; relator type, &quot;employedBy&quot; can be derived from the &quot;Employment&quot; relator type.
+
+Encompasses &quot;Material Relation&quot; in Guizzardi (2005) and corresponds to &quot;Material Relation&quot; in Fonseca et al. (2019).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>MaterialRelationshipType</IRI>
+        <Literal xml:lang="en">MaterialRelationshipType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>MaterialRelationshipType</IRI>
+        <IRI>isDerivedFrom</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Mixin</IRI>
+        <Literal xml:lang="en">A gufo:EndurantType that is both non-sortal and semi-rigid. As a semi-rigid type, it applies necessarily to some of its instances and contingently to some others. As a non-sortal, it captures properties shared by instances of different kinds.
+
+For example, the type &quot;FemaleAnimal&quot; may be considered a gufo:Mixin as it applies necessarily to animals of certain species, e.g., lions and sharks, while it applies contingently to animals of other species such as clownfish and mushroom corals (which may change sex given certain conditions).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Mixin</IRI>
+        <Literal xml:lang="en">Mixin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>NonRigidType</IRI>
+        <Literal xml:lang="en">A gufo:EndurantType that does not apply necessarily to at least one of its instances (see Guizzardi, 2005, chapter 4).
+
+Examples include anti-rigid types, such as the role &quot;Student&quot; and the phase &quot;Child&quot;, and semi-rigid types, such as the mixin &quot;MusicalArtist&quot; (which necessarily characterizes bands, but contingently characterizes people) and the mixin &quot;FemaleAnimal&quot; (which is necessarily characterizes female dogs, but contigently characterizes clownfish).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>NonRigidType</IRI>
+        <Literal xml:lang="en">NonRigidType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>NonSortal</IRI>
+        <Literal xml:lang="en">A gufo:EndurantType that applies to individuals of different kinds (see Guizzardi, 2005, chapter 4).
+
+Non-sortals do not provide a uniform principle of identity for their instances; instead, they just classify things that share common properties but which obey different principles of identity.
+
+Also termed &quot;dispersive&quot; types in the philosophical literature.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>NonSortal</IRI>
+        <Literal xml:lang="en">NonSortal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Object</IRI>
+        <Literal xml:lang="en">A gufo:Endurant that does not depend on another endurant for its existence (excluding its essential parts and aspects). 
+
+Examples of objects include ordinary physical entities, such as a dog, a house, a tomato, a car, Alan Turing, but also socially-defined entities such as The Rolling Stones, the European Union, the Brazilian 1988 Constitution.
+
+Guizzardi (2005) also included the more abstract notion of &quot;Substantial&quot;, which generalizes both objects and amounts of matter. That notion was left out from this implementation, together with the notion of amount of matter. Support for the representation of maximally-self-connected amounts of matter is given by gufo:Quantity.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Object</IRI>
+        <Literal xml:lang="en">Object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Participation</IRI>
+        <Literal xml:lang="en">A gufo:Event that depends on a single object. 
+
+Participations can be used to partition an event into portions, each of which depend exclusively on a single object. Consider a business meeting with multiple participants, including John and Mary. John&apos;s participation in the meeting encompasses all events that are part of the meeting and that depend solely on him. Likewise, Mary&apos;s participation encompasses all events that are part of the meeting and that depend solely on her. Similarly, in Brutus’ stabbing of Caesar, we may identify the participations of Brutus, of Caesar, and of the dagger.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Participation</IRI>
+        <Literal xml:lang="en">Participation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>Participation</IRI>
+        <IRI>participatedIn</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Phase</IRI>
+        <Literal xml:lang="en">A gufo:EndurantType that is both sortal and anti-rigid. It is defined by instrinsic but contingent instantiation conditions. Phases are relationally independent types that capturec instrinsic properties shared by instances of a given kind.
+
+For example, &quot;Child&quot; may be considered a gufo:Phase as a subclass of the gufo:Kind &quot;Person&quot;, instantiated by persons younger than 12. Another example is the type &quot;IllPerson&quot;, which may be considered a gufo:Phase that is instantiated whenever an instance of &quot;Disease&quot; (a gufo:IntrinsicMode) inheres in a person.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Phase</IRI>
+        <Literal xml:lang="en">Phase</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>PhaseMixin</IRI>
+        <Literal xml:lang="en">A gufo:EndurantType that is both non-sortal and anti-rigid. It is defined by instrinsic but contingent instantiation conditions. Phase mixins are relationally independent types that capture instrinsic properties shared by instances of different kinds.
+
+For example, &quot;LivingAnimal&quot; may be considered a gufo:PhaseMixin as a superclass of the phases &quot;LivingPerson&quot; (specializing the gufo:Kind &quot;Person&quot;) and &quot;LivingDog&quot; (specializing the gufo:Kind &quot;Dog&quot;).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>PhaseMixin</IRI>
+        <Literal xml:lang="en">PhaseMixin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Quality</IRI>
+        <Literal xml:lang="en">A gufo:IntrinsicAspect that is measurable by some value spaces. A quality may be used to compare individuals, on the basis of the value it takes in a certain quality space (for instance, a position within the RGB spectrum).
+
+Examples include the weight of a person, the name of organization, the color of a car, and the duration of a concert.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Quality</IRI>
+        <Literal xml:lang="en">Quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>QualityValue</IRI>
+        <Literal xml:lang="en">A gufo:AbstractIndividual that can be associated with a gufo:Quality reflecting the perception or conception of the quality in a certain value space. 
+
+Instances of gufo:QualityValue include the rational number 2.5 when used to conceive of the acidity of a portion of wine (in a pH scale), the tuple &lt;38.8897,-77.0089&gt; when used to conceive of the location of a building (in a space formed by latitude and longitude), or the triplet &lt;0,0,0&gt; when used to conceive of the color of a physical object (in a trimensional space formed by red, green and blue color components).  
+
+Corresponds to &quot;Quale&quot; in Guizzardi (2005). 
+
+Use this class only for quality values (qualia) that are to be reified in the A-box and associated with a gufo:ConcreteIndividual through the object property gufo:hasReifiedQualityValue. Otherwise, use the gufo:hasQualityValue data property and a literal to determine the quality value.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>QualityValue</IRI>
+        <Literal xml:lang="en">QualityValue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>QualityValue</IRI>
+        <IRI>hasReifiedQualityValue</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>QualityValueAttributionSituation</IRI>
+        <Literal xml:lang="en">A gufo:Situation in which a quality value is temporarily attributed to a gufo:Endurant.
+
+A gufo:QualityValueAttributionSituation should be used only for mutable qualities, i.e. those whose value can vary in time.
+
+Examples include: the situation in which the value of a bitcoin in Euros is 6.526,12, which lasted from 10/12/2019 to 11/12/2019; the situation in which the weight of Mike Tyson was 100 kg; and the situation in which the color of Einstein&apos; hair was grey.
+
+This is a reification of the quality value attribution (in a solution that is similar to the qualified relation pattern  http://patterns.dataincubator.org/book/qualified-relation.html )</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>QualityValueAttributionSituation</IRI>
+        <Literal xml:lang="en">QualityValueAttributionSituation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>QualityValueAttributionSituation</IRI>
+        <IRI>concernsQualityValue</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>QualityValueAttributionSituation</IRI>
+        <IRI>concernsReifiedQualityValue</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Quantity</IRI>
+        <Literal xml:lang="en">A complex gufo:Object that is a maximally-connected portion of stuff. A gufo:Quantity has a fixed constitution, and thus, removing or adding a sub-quantity would result in a different quantity.
+
+Examples include the portion of wine in a wine tank, a lump of clay, the gold that constitutes a wedding ring.
+
+Also termed &quot;quantity of matter&quot;, &quot;objectified portion of matter&quot;, &quot;piece&quot; in the philosophical literature.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Quantity</IRI>
+        <Literal xml:lang="en">Quantity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>Quantity</IRI>
+        <IRI>isSubQuantityOf</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>RelationshipType</IRI>
+        <Literal xml:lang="en">A gufo:Type whose instances are ordered pairs of related entities. Instances of gufo:RelationshipType are object properties in UFO-based ontologies.
+
+The object properties &quot;marriedWith&quot; and &quot;enrolledIn&quot; are examples of material relationship types. The object properties &quot;heavierThan&quot;, &quot;olderThan&quot; are examples of comparative relationship types.
+
+The use of gufo:RelationshipType and its subclasses requires OWL 2 punning.
+
+Corresponds to &quot;Relation&quot; in Guizzardi (2005) and Fonseca et al. (2019).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>RelationshipType</IRI>
+        <Literal xml:lang="en">RelationshipType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Relator</IRI>
+        <Literal xml:lang="en">A gufo:ExtrinsicAspect that connects (involves, mediates) two or more concrete individuals. Relators are reified relationships composed of reciprocal extrinsic modes.
+
+Examples of relators include John and Mary&apos;s marriage (composed of John&apos;s obligations towards Mary in the scope of the marriage, Mary&apos;s reciprocal claims, Mary&apos;s obligations towards John, John&apos;s reciprocal claims), Mary&apos;s employment contract at Nasa, a covalent bond between two atoms.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Relator</IRI>
+        <Literal xml:lang="en">Relator</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>Relator</IRI>
+        <IRI>mediates</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>RigidType</IRI>
+        <Literal xml:lang="en">A gufo:EndurantType which applies necessarily to its instances (see Guizzardi, 2005, chapter 4).
+
+Examples include the types &quot;Agent&quot;, &quot;Person&quot;, &quot;Animal&quot;, &quot;PhysicalObject&quot;, &quot;Car&quot;, and &quot;Tree&quot;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>RigidType</IRI>
+        <Literal xml:lang="en">RigidType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Role</IRI>
+        <Literal xml:lang="en">A gufo:EndurantType that both sortal and anti-rigid. It is defined by relational instantiation conditions. Roles are relationally dependent types, capturing relational properties shared by instances of a given kind.
+
+For example, &quot;Student&quot; may be considered a gufo:Role as a subclass of the gufo:Kind &quot;Person&quot;, instantiated by all persons enrolled in a school. &quot;</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Role</IRI>
+        <Literal xml:lang="en">Role</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>RoleMixin</IRI>
+        <Literal xml:lang="en">A gufo:EndurantType that is both non-sortal and anti-rigid. It is defined by relational instantiation conditions. Role mixins are relationally dependent types, capturing relational properties shared by instances of different kinds.
+
+For example, &quot;Customer&quot; may be considered a gufo:RoleMixin as a superclass of the roles &quot;CorporateCustomer&quot; (specializing the gufo:Kind &quot;BusinessOrganization&quot;) and &quot;PersonalCustomer&quot; (specializing the gufo:Kind &quot;Person&quot;).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>RoleMixin</IRI>
+        <Literal xml:lang="en">RoleMixin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>SemiRigidType</IRI>
+        <Literal xml:lang="en">A gufo:NonRigidType that applies necessarily to some of its instances and contingently to some others (see Guizzardi, 2005, chapter 4).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>SemiRigidType</IRI>
+        <Literal xml:lang="en">SemiRigidType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Situation</IRI>
+        <Literal xml:lang="en">A gufo:ConcreteIndividual that is a particular configuration of a part of reality which can be understood as a whole and in which entities stand in relations. A situation may be counterfactual or actual. An actual situation (or in other words, a &quot;fact&quot;) &quot;obtains&quot; in a certain time instant or during a time interval.
+
+Note that, in Guizzardi et al. (2013), situations were considered to obtain at a specific point in time. Here, instead, they obtain in a time interval when begin and end points differ.
+
+The various subclasses of Situation in this implementation are used to capture &quot;mutable&quot; facts which obtain during some time and fail to obtain at other times. This includes the contingent instantiation of non-rigid types (e.g., as someone is a child at one point in time and a teenager later), the attribution of value to mutable qualities (such as a person&apos;s weight) and temporary participation in part-whole relations for replaceable parts (such as a car&apos;s tires). Other subclasses may be created to capture domain-specific notions such as &quot;HazardousSituation&quot;, &quot;PersonHasFever&quot;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Situation</IRI>
+        <Literal xml:lang="en">Situation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>SituationType</IRI>
+        <Literal xml:lang="en">A gufo:Type whose instances are situations.
+
+Instances of gufo:SituationType are subclasses of gufo:Situation.
+
+Examples include &quot;HazardousSituation&quot;, &quot;PersonHasFever&quot;,  &quot;PersonIsStudent&quot;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>SituationType</IRI>
+        <Literal xml:lang="en">SituationType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Sortal</IRI>
+        <Literal xml:lang="en">A gufo:EndurantType which carries (or supplies) a principle of identity for its instances  (see Guizzardi, 2005, chapter 4).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Sortal</IRI>
+        <Literal xml:lang="en">Sortal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>SubKind</IRI>
+        <Literal xml:lang="en">A gufo:EndurantType that is both sortal and rigid. It specializes a gufo:Kind carrying the principle of identity supplied by that kind. Every gufo:SubKind should directly or indirectly specialize a gufo:Kind.
+
+For example, the gufo:Kind &quot;Lion&quot; may be specialized into the &quot;Lionness&quot; and &quot;Male Lion&quot; subkinds, while the gufo:Kind &quot;Computer&quot; may be specialized into the &quot;Laptop&quot; and &quot;Desktop&quot; subkinds.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>SubKind</IRI>
+        <Literal xml:lang="en">SubKind</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>TemporaryConstitutionSituation</IRI>
+        <Literal xml:lang="en">A gufo:Situation in which a gufo:Endurant temporarly constitutes another gufo:Endurant.
+
+When constitution of an object may change in time, it may be qualified by the period in time in which the relation applies. 
+
+Examples include: the situation in which the Beatles is constituted by the group composed of {John,Paul,Ringo,George}; and the situation in which the statue of Venus de Milo was constituted by its original quantity of marble (including its arms).
+
+This is a reification of constitution (in a solution that is similar to the qualified relation pattern  http://patterns.dataincubator.org/book/qualified-relation.html)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>TemporaryConstitutionSituation</IRI>
+        <Literal xml:lang="en">TemporaryConstitutionSituation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>TemporaryInstantiationSituation</IRI>
+        <Literal xml:lang="en">A gufo:Situation in which a gufo:Endurant temporarily instantiates a gufo:NonRigidType.
+
+A gufo:TemporaryInstantiationSituation can account for the time period in which a particular instantiation holds.
+
+Examples include: the situation in which Obama instantiates the role of president, which began in 20/01/2009 and lasted until 20/01/2017; the situation in which Coatria instantiates the role of EU Member, which began in 01/07/2013 (and is still on-going); and the situation in which Steve Jobs instantiates the child phase, which began in 24/02/1955 and lasted until 24/02/1965.
+
+This solution is inspired in the qualified relation pattern (http://patterns.dataincubator.org/book/qualified-relation.html).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>TemporaryInstantiationSituation</IRI>
+        <Literal xml:lang="en">TemporaryInstantiationSituation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>TemporaryParthoodSituation</IRI>
+        <Literal>A gufo:Situation in which a gufo:Endurant is temporarily a part of another gufo:Endurant.
+
+A gufo:TemporaryParthoodSituation should only be used for mutable parts. It may be qualified by the period in time in which the relation applies. 
+
+Examples include: the situation in which the United Kingdom is a member of the European Union; the situation in which Messi is a a member of the Barcelona FC squad; the situation in which an engine is part of a car; and the situation in which a transplanted heart is part of a person.
+
+Note that, since every instance of gufo:Quantity or gufo:FixedCollection only has essential parts, the gufo:TemporaryParthoodSituation should not be used to represent these parthood relations.
+ 
+This solution is inspired in the qualified relation pattern (http://patterns.dataincubator.org/book/qualified-relation.html).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>TemporaryParthoodSituation</IRI>
+        <Literal xml:lang="en">TemporaryParthoodSituation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>TemporaryRelationshipSituation</IRI>
+        <Literal xml:lang="en">A gufo:Situation in which a gufo:Endurant temporarily stands in a relation with another gufo:Endurant (or other endurants in the case of n-ary relationships). 
+
+Reification of a gufo:TemporaryRelationshipSituation allows qualification of the relationship with the period in time in which it applies. 
+
+Examples include: the situation in which Einstein works at the Swiss Patent Office in Bern; the situation in which Elon Musk studies at the University of Pennsylvania; the situation in which John Lennon is married to Yoko Ono; and the situation in which Facebook has a lower market value than Amazon.
+
+For material relationships, prefer the use of gufo:Relator.
+
+This is a reification of the relationship (in a solution that is similar to the qualified relation pattern  http://patterns.dataincubator.org/book/qualified-relation.html).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>TemporaryRelationshipSituation</IRI>
+        <Literal xml:lang="en">TemporaryRelationshipSituation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Type</IRI>
+        <Literal xml:lang="en">An entity that may be instantiated by (or predicated over) other entities. Types encompass what we often call &quot;sorts&quot;, &quot;kinds&quot;, &quot;categories&quot;, etc. 
+
+Examples include the kind &quot;Person&quot;, the event type &quot;Earthquake&quot;, and the abstract individual type &quot;NaturalNumber&quot;. Relations, such as &quot;marriedTo&quot; and &quot;olderThan&quot;, are also considered as types.
+
+Instances of gufo:Type are classes, and should specialize the taxonomy of individuals of gUFO. For example, &quot;Person&quot; is a gufo:Type (more specifically a gufo:Kind), specializing gufo:Object. The mechanism that allows for this is called punning in OWL 2.
+
+Encompasses the notion of &quot;Universal&quot; in Guizzardi (2005).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Type</IRI>
+        <Literal xml:lang="en">Type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>VariableCollection</IRI>
+        <IRI>TemporaryParthoodSituation</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>VariableCollection</IRI>
+        <Literal xml:lang="en">A gufo:Collection for which change in membership is possible.
+
+Such a collection obeys an intensional principle of identity, i.e., change in membership does not necessarily create a different collection.
+
+For example, KLM&apos;s fleet of airplanes could be understood as a gufo:VariableCollection. In this case, when the company acquires (or retires) an airplane, the fleet changes. Note that, in this case, the airplanes are conceptualized as playing the role of &quot;member of a fleet&quot;. If various roles for the parts of a fleet were envisioned (such as &quot;cargo airplane&quot;, &quot;passenger airplane&quot;), then a fleet would be best understood as a gufo:FunctionalComplex.
+
+See gufo:TemporaryParthoodSituation for the pattern to represent the relation of a variable collection to its temporary parts.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>VariableCollection</IRI>
+        <Literal xml:lang="en">VariableCollection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>broughtAbout</IRI>
+        <Literal xml:lang="en">Identifies a gufo:Situation that is brought about by the gufo:Event.
+
+Guizzardi et al. (2013) included a notion of &quot;brings-about&quot; that related events to a single (&quot;maximal&quot;) situation, embodying all the effects of the event at the time it ends. This implementation of gufo:broughtAbout diverges from &quot;brings-about&quot; in that work because gufo:broughtAbout can be used to relate events to more than one gufo:Situation. Each gufo:Situation identified through gufo:broughtAbout should be understood as an (improper) part of the maximal situation.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broughtAbout</IRI>
+        <Literal xml:lang="en">broughtAbout</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>categorizes</IRI>
+        <Literal xml:lang="en">Identifies a gufo:Type whose instances may be classified by instances of the categorizing higher-order type.
+
+For example, &quot;ShipType&quot; gufo:categorizes &quot;Ship&quot;. Instances of &quot;ShipType&quot; such as &quot;Supercarrier&quot; and &quot;Cargoship&quot; should be declared subclasses of &quot;Ship&quot;. OWL 2 punning should be used to capture the two facets of &quot;Supercarrier&quot; and &quot;Cargoship&quot; in this example: (i) as instances of &quot;ShipType&quot;, and (ii) as subclasses of &quot;Ship&quot;.
+
+The categorized type is termed the &quot;base type&quot; in the &quot;powertype pattern&quot; see Carvalho et al (2017), the higher-order type is often called the &quot;powertype&quot;.  
+
+gufo:categorizes is the general (unspecific) form of categorization. See  gufo:partitions for a more specific form, in which instances of the categorized type are classified by exactly one instance of the higher-order type. 
+
+The domain is gufo:Type excluding gufo:AbstractIndividualType as well as gufo:ConcreteIndividualTypes because those types are first-order types (their instances are individuals). Only instances of gufo:Type representing higher-order types can categorize a base type.
+
+For further details and formalization of &quot;categorization&quot;, see Carvalho et al (2017) which combines UFO with MLT (a multi-level modeling theory).  
+
+V. A. Carvalho, J. P. A. Almeida, C. M. Fonseca, and G. Guizzardi, “Multi-level ontology-based conceptual modeling,” Data &amp; Knowledge Engineering, vol. 109, p. 3–24, 2017. &lt;http://dx.doi.org/10.1016/j.datak.2017.03.002&gt;</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>categorizes</IRI>
+        <Literal xml:lang="en">categorizes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>concernsConstitutedEndurant</IRI>
+        <Literal xml:lang="en">Identifies the constituted gufo:Endurant in the gufo:TemporaryConstitutionSituation.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>concernsConstitutedEndurant</IRI>
+        <Literal xml:lang="en">concernsConstitutedEndurant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>concernsNonRigidType</IRI>
+        <Literal xml:lang="en">Identifies the gufo:NonRigidType that is instantiated by the endurant that stands in a gufo:TemporaryInstantiationSituation.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>concernsNonRigidType</IRI>
+        <Literal xml:lang="en">concernsNonRigidType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>concernsQualityType</IRI>
+        <Literal xml:lang="en">Identifies the quality type (a gufo:EndurantType subclassing gufo:Quality) whose value is attributed in the gufo:QualityValueAttributionSituation.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>concernsQualityType</IRI>
+        <Literal xml:lang="en">concernsQualityType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>concernsQualityValue</IRI>
+        <Literal xml:lang="en">Determines a quality value associated with the gufo:ConcreteIndividual that stands in the gufo:QualityValueAttributionSituation.
+
+Use gufo:concernsReifiedQualityValue instead when quality values are refied.
+
+It is recommended that subproperties of gufo:concernsQualityValue are created, possibly identifying the datatype to be used. For example, &quot;concernsTemperatureValue&quot; could be defined as a sub-property of gufo:concernsQualityValue with range xsd:double.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>concernsQualityValue</IRI>
+        <Literal xml:lang="en">concernsQualityValue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>concernsQualityValue</IRI>
+        <IRI>concernsReifiedQualityValue</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>concernsReifiedQualityValue</IRI>
+        <IRI>concernsQualityValue</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>concernsReifiedQualityValue</IRI>
+        <Literal xml:lang="en">Identifies the gufo:QualityValue (i.e., the reified quality value) associated with the endurant that stands in the gufo:QualityValueAttributionSituation.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>concernsReifiedQualityValue</IRI>
+        <Literal xml:lang="en">concernsReifiedQualityValue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>concernsRelatedEndurant</IRI>
+        <Literal xml:lang="en">Identifies the related gufo:Endurant in the gufo:TemporaryRelationshipSituation.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>concernsRelatedEndurant</IRI>
+        <Literal xml:lang="en">concernsRelatedEndurant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>concernsRelationshipType</IRI>
+        <Literal xml:lang="en">Identifies the gufo:RelationshipType instantiated in the gufo:TemporaryRelationshipSituation.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>concernsRelationshipType</IRI>
+        <Literal xml:lang="en">concernsRelationshipType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>concernsTemporaryWhole</IRI>
+        <Literal xml:lang="en">Identifies the whole (a gufo:Endurant) of which the endurant that stands in the gufo:TemporaryParthoodSituation is part.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>concernsTemporaryWhole</IRI>
+        <Literal xml:lang="en">concernsTemporaryWhole</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>constitutes</IRI>
+        <Literal xml:lang="en">Identifies a gufo:ConcreteIndividual that is constituted (partially) by the constituent individual.
+
+For example, the gufo:Collection of persons whose members are John, Paul, George, Ringo constituted the beatles, the gufo:Quantity of marble that constitutes the statue of Venus de Milo, and the gufo:Event of Paul raising his arm in a meeting that constitutes his voting (also a gufo:Event).
+
+In case constitution changes in time, see gufo:standsInQualifiedConstitution.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>constitutes</IRI>
+        <Literal xml:lang="en">constitutes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>constitutes</IRI>
+        <IRI>standsInQualifiedConstitution</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>contributedToTrigger</IRI>
+        <Literal xml:lang="en">Identifies a gufo:Event that the gufo:Situation contributed to trigger.
+
+Guizzardi et al. (2013) defined a notion of &quot;triggers&quot; to relate the situation satisfying all the sufficient and necessary conditions with the triggered  event. This implementation differs from  &quot;triggers&quot; as defined in that work because gufo:contributedToTrigger can be used to relate more than one gufo:Situation to a gufo:Event. Each gufo:Situation identified through gufo:contributedToTrigger should be understood as an (improper) part of the situation that triggered the event.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>contributedToTrigger</IRI>
+        <Literal xml:lang="en">contributedToTrigger</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>externallyDependsOn</IRI>
+        <Literal xml:lang="en">Identifies a gufo:Endurant on which the gufo:ExtrinsicMode depends.
+
+For example, John&apos;s duty to return the book he borrowed from Mary (a gufo:ExtrinsicMode) depends externally on Mary.
+
+The identifed gufo:Endurant should  be external to the bearer of the extrinsic mode (see Guizzardi, 2005, p. 239). In other words, the identified endurant should not be a part or an intrisic aspect of the bearer of the extrinsic mode.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>externallyDependsOn</IRI>
+        <Literal xml:lang="en">externallyDependsOn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasAssociatedQualityValueType</IRI>
+        <Literal xml:lang="en">Identifies a quality value type to which the quality type is associated. 
+
+For example, a &quot;Color&quot; quality type may be associated with a &quot;ColorValueInRGB&quot; quality value type.
+
+It relates a specialization of gufo:Quality (an instance of gufo:EndurantType) to a specialization of gufo:QualityValue  (an instance of gufo:AbstractIndividualType).
+
+To be used only when quality values are reified.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasAssociatedQualityValueType</IRI>
+        <Literal xml:lang="en">hasAssociatedQualityValueType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasBeginPoint</IRI>
+        <Literal xml:lang="en">Identifies the begin point for a gufo:ConcreteIndividual, in the case in which time instants are reified. 
+
+In the case of endurants, this identifies the time point when the endurant comes into existence. In the case of events, this identifies the time point when the event starts to take place. In the case of situation, this identifies the time point when the situation begins to hold.
+
+If time instants are not reified, use gufo:hasBeginPointInXSDDate or gufo:hasBeginPointInXSDDateTimeStamp.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasBeginPoint</IRI>
+        <Literal xml:lang="en">hasBeginPoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>hasBeginPoint</IRI>
+        <IRI>hasBeginPointInXSDDate</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>hasBeginPoint</IRI>
+        <IRI>hasBeginPointInXSDDateTimeStamp</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasBeginPointInXSDDate</IRI>
+        <Literal xml:lang="en">Determines the begin point for a gufo:ConcreteIndividual, using a xsd:date literal.
+
+In the case of endurants, gufo:asBeginPointInXSDDate determines the time point when the endurant comes into existence. In the case of events, this data property determines the time point when the event starts to take place. In the case of situation, it determines the time point when the situation begins to hold.
+
+Use gufo:hasBeginPoint instead when temporal entities are reified.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasBeginPointInXSDDate</IRI>
+        <Literal xml:lang="en">hasBeginPointInXSDDate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>hasBeginPointInXSDDate</IRI>
+        <IRI>hasBeginPoint</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>hasBeginPointInXSDDate</IRI>
+        <IRI>hasBeginPointInXSDDateTimeStamp</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasBeginPointInXSDDateTimeStamp</IRI>
+        <Literal xml:lang="en">Determines the begin point for a gufo:ConcreteIndividual, using a xsd:dateTimeStamp literal.
+
+In the case of endurants, gufo:hasBeginPointInXSDDateTimeStamp determines the time point when the endurant comes into existence. In the case of events, this data property determines the time point when the event starts to take place. In the case of situation, it determines the time point when the situation begins to hold.
+
+Use gufo:hasBeginPoint instead when temporal entities are reified.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasBeginPointInXSDDateTimeStamp</IRI>
+        <Literal xml:lang="en">hasBeginPointInXSDDateTimeStamp</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>hasBeginPointInXSDDateTimeStamp</IRI>
+        <IRI>hasBeginPoint</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>hasBeginPointInXSDDateTimeStamp</IRI>
+        <IRI>hasBeginPointInXSDDate</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasEndPoint</IRI>
+        <Literal xml:lang="en">Identifies the end point for a gufo:ConcreteIndividual, in the case in which time instants are reified.
+
+In the case of endurants, this identifies the time point when the endurant ceases to exist. In the case of events, this identifies the time point when the event ends. In the case of situation, this identifies the time point when the situation ceases to hold.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasEndPoint</IRI>
+        <Literal xml:lang="en">hasEndPoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>hasEndPoint</IRI>
+        <IRI>hasEndPointInXSDDate</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>hasEndPoint</IRI>
+        <IRI>hasEndPointInXSDDateTimeStamp</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasEndPointInXSDDate</IRI>
+        <Literal xml:lang="en">Determines the end point for a gufo:ConcreteIndividual using a xsd:date literal.
+ 
+In the case of endurants, gufo:hasEndPointInXSDDate determines the time point when the endurant ceases to exist. In the case of events, this data property determines the time point when the event ends. In the case of situation, it determines the time point when the situation ceases to hold.
+
+Use gufo:hasEndPoint instead when temporal entities are reified.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasEndPointInXSDDate</IRI>
+        <Literal xml:lang="en">hasEndPointInXSDDate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>hasEndPointInXSDDate</IRI>
+        <IRI>hasEndPoint</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>hasEndPointInXSDDate</IRI>
+        <IRI>hasEndPointInXSDDateTimeStamp</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasEndPointInXSDDateTimeStamp</IRI>
+        <Literal xml:lang="en">Determines the end point for a gufo:ConcreteIndividual using a xsd:dateTimeStamp literal.
+ 
+In the case of endurants, gufo:hasEndPointInXSDDateTimeStamp determines the time point when the endurant ceases to exist. In the case of events, this data property determines the time point when the event ends. In the case of situation, it determines the time point when the situation ceases to hold.
+
+Use gufo:hasEndPoint instead when temporal entities are reified.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasEndPointInXSDDateTimeStamp</IRI>
+        <Literal xml:lang="en">hasEndPointInXSDDateTimeStamp</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>hasEndPointInXSDDateTimeStamp</IRI>
+        <IRI>hasEndPoint</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>hasEndPointInXSDDateTimeStamp</IRI>
+        <IRI>hasEndPointInXSDDate</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasQualityValue</IRI>
+        <Literal xml:lang="en">Determines a quality value associated with the concrete individual.
+
+Use gufo:hasReifiedQualityValue instead when quality values are reified.
+
+It is recommended that subproperties of gufo:hasQualityValue are created, possibly identifying the datatype to be used. For example, &quot;hasTemperatureValue&quot; could be defined as a sub-property of gufo:hasQualityValue whose domain is &quot;Temperature&quot; (specializing gufo:Quality) and whose range is xsd:double.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasQualityValue</IRI>
+        <Literal xml:lang="en">hasQualityValue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>hasQualityValue</IRI>
+        <IRI>hasReifiedQualityValue</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasReifiedQualityValue</IRI>
+        <Literal xml:lang="en">Identifies an instance of gufo:QualityValue to reflect the perception or conception of a quality in a certain value space. 
+
+Use this property only for quality values that are to be reified in the A-box and associated with a gufo:ConcreteIndividual. Otherwise, use the gufo:hasQualityValue data property and a literal to determine the quality value.
+
+The full representation pattern for quality values involves first identifying a gufo:Quality that inheres in a concrete individual and then associating it with a reified quality value. For example, let us consider the color of Yves Klein&apos;s &quot;Blue Monochrome&quot; painting made in 1961 (MoMA&apos;s object with number 618.1967). In the full pattern, an instance of gufo:Quality that inheres in the physical object (the color of that painting) is associated with a gufo:QualityValue (say the triplet &lt;0, 47, 167&gt; for that painting) through gufo:hasReifiedQualityValue. The full pattern is recommended when different quality spaces are expected to be used for the same quality. For example, the color of that painting could also be associated with a quadruple &lt;100, 72, 0, 35&gt; representing the same color in a CMYK space.
+
+When the full pattern is not required, gufo:hasReifiedQualityValue can also be used to directly associate a concrete individual (without identifying the quality) with a quality value.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasReifiedQualityValue</IRI>
+        <Literal xml:lang="en">hasReifiedQualityValue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>hasReifiedQualityValue</IRI>
+        <IRI>hasQualityValue</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasValueComponent</IRI>
+        <Literal xml:lang="en">This property is used for quality values that are defined in terms of a multidimensional quality structure (such as color conceived in terms of hue, saturation and brightness). Each value component of a quality value (a particular value for hue, a particular value for saturation, a particular value for brightness) is determined with this property. 
+
+It is recommended that subproperties of gufo:hasValueComponent are created to indicate values for particular dimensions, possibly identifying the datatype to be used. For example &quot;hasHueComponent&quot;, &quot;hasSaturationComponent&quot; and &quot;hasBrightnessComponent&quot; could be used as data properties specializing gufo:hasValueComponent with the xsd:double datatype.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasValueComponent</IRI>
+        <Literal xml:lang="en">hasValueComponent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>historicallyDependsOn</IRI>
+        <Literal xml:lang="en">Identifies a gufo:ConcreteIndividual on which the concrete individual depends historically. 
+
+For example, a person is historically dependent on his/her ancestors.
+
+When used between events, historical dependence encompasses causation (when the event is caused by the other), but also other cases where there is dependence but not causation (when the event brings about a situation that is either insufficient or more than sufficient to trigger the historically dependent event).
+
+For example, Real Madrid&apos;s goal in the 60th minute of the 2016 FIFA Club World Cup Final is historically dependent on (and in this case caused by) a penalty kick by Cristiano Ronaldo. The penalty kick itself is historically dependent on (but not caused by) a penalty (the occurrence of the penalty is necessary but not sufficient to cause the penalty kick as authorization of the referee is required). 
+
+Historical dependence is transitive. Hence, in the example above, Real Madrid&apos;s goal is historically dependent on the penalty.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>historicallyDependsOn</IRI>
+        <Literal xml:lang="en">historicallyDependsOn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>inheresIn</IRI>
+        <Literal xml:lang="en">Identifies the gufo:ConcreteIndividual in which the gufo:Aspect inheres. Inherence is a sort of existential dependence. The identified concrete individual is the &quot;bearer&quot; of the aspect.
+
+For example, the color of an object inheres in the object and the average speed of a flight inheres in the flight.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>inheresIn</IRI>
+        <Literal xml:lang="en">inheresIn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isAspectProperPartOf</IRI>
+        <Literal xml:lang="en">Identifies a gufo:Aspect of which the aspect is a proper part.
+
+For example, John&apos;s obligations towards Mary in the scope of their marriage is an aspect proper part of their marriage  (and same can be said of Mary&apos;s extrinsic aspects in the scope of their marriage.)
+
+This property can be used to represent the composition of a relator from extrisinc aspects, but also to represent complex extrisinc aspects.
+
+gufo:isAspectProperPartOf is transitive.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isAspectProperPartOf</IRI>
+        <Literal xml:lang="en">isAspectProperPartOf</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isCollectionMemberOf</IRI>
+        <Literal xml:lang="en">Identifies a gufo:Collection of which the object is a member. 
+
+This is the relation between John and a group of persons, and between a cow and its herd.
+
+gufo:isCollectionMemberOf is intransitive (Guizzardi, 2005, p. 185).
+
+For membership in a gufo:VariableCollection, see gufo:standsInQualifiedParthood.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isCollectionMemberOf</IRI>
+        <Literal xml:lang="en">isCollectionMemberOf</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>isCollectionMemberOf</IRI>
+        <IRI>standsInQualifiedParthood</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isComponentOf</IRI>
+        <Literal xml:lang="en">Identifies a gufo:FunctionalComplex of which the object is a component.
+
+For example, the habitation module is a component of the International Space Station, and so are each of the solar panels; Obama&apos;s brain is a component of his body, and so is his heart; the engine is a component of the HMS Queen Elizabeth (R08).
+
+gufo:isComponentOf is not transitive in the general case. Particular sub-properties may be transitive (Guizzardi, 2005, p. 183).
+
+When a component may change its relation to be whole, see gufo:standsInQualifiedParthood.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isComponentOf</IRI>
+        <Literal xml:lang="en">isComponentOf</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>isComponentOf</IRI>
+        <IRI>standsInQualifiedParthood</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isDerivedFrom</IRI>
+        <Literal xml:lang="en">Identifies a gufo:EndurantType from which the material or comparative relation can be derived. The identified gufo:EndurantType should be a subclass of gufo:Aspect, more specifically a subclass of gufo:ExtrinsicAspect in the case of a gufo:MaterialRelationshipType, and a subclass of gufo:IntrinsicAspect in the case of a gufo:ComparativeRelationshipType.
+
+For example, &quot;marriedWith&quot; can be derived from &quot;Marriage&quot;, &quot;heavierThan&quot; can be derived from &quot;Weight&quot;.
+
+See Fonseca et al. (2019).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isDerivedFrom</IRI>
+        <Literal xml:lang="en">isDerivedFrom</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isEventProperPartOf</IRI>
+        <Literal xml:lang="en">Identifies a gufo:Event of which the event is part. 
+
+For example, Cristiano Ronaldo&apos;s penalty kick is an event proper part of the 2016 FIFA Club World Cup Final, having ocurred in the 60th minute of that match. That match is itself an event proper part of the 2016 FIFA Club World Cup.
+
+The match can be decomposed in different ways. For example, we can identify the participation of each player in the match (instances of gufo:Participation that are proper parts of the match) or decomposed the match using some temporal segmentation (each minute of the match, each of which is a proper part of the match).
+
+gufo:isEventProperPartOf is transitive.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isEventProperPartOf</IRI>
+        <Literal xml:lang="en">isEventProperPartOf</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isObjectProperPartOf</IRI>
+        <Literal xml:lang="en">Identifies a gufo:Object of which the object is a part.
+
+This is a general parthood relation between objects. Use the various sub-properties provided in order to represent specific types of parthood, each of which has specialized semantics (and different formal properties in this implementation, in particular, transitivity (Guizzardi, 2005, section 5.6).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isObjectProperPartOf</IRI>
+        <Literal xml:lang="en">isObjectProperPartOf</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isProperPartOf</IRI>
+        <Literal xml:lang="en">Identifies a whole of which the entity is a proper part.
+
+gufo:isProperPartOf is the most generic parthood relation in this implementation. Use the various sub-properties provided in order to represent specific types of parthood.
+
+Proper parthood (and each of its sub-properties) is asymmetric and irreflexive. Nevertheless, these characteristics are not declared in this implementation since that would violate rules of OWL 2 DL that guarantee decidability of reasoning. Instead, we have focused only on declaring transitivity where applicable.
+
+Note that gufo:isProperPartOf (as the most general notion of parthood) is transitive, although the various sub-properties may not be transitive.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isProperPartOf</IRI>
+        <Literal xml:lang="en">isProperPartOf</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isSituationProperPartOf</IRI>
+        <Literal xml:lang="en">Identifies a gufo:Situation of which the situation is a part.
+
+Examples include: the situation in which John has influenza is part of the situation in which John has influenza and he is tired; the situation in which John is friends with Mary is part of the situation in which he is friends with Mary and Alice; the situation in which John is married to Alice is part of the situation in which John is married to Alice, while she works at the Free University of Bozen-Bolzano.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isSituationProperPartOf</IRI>
+        <Literal xml:lang="en">isSituationProperPartOf</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isSubCollectionOf</IRI>
+        <Literal xml:lang="en">Identifies a gufo:Collection of which the collection is a sub-collection. All members of the sub-collection are members of the identified super-collection.
+
+gufo:isSubCollectionOf is transitive (Guizzardi, 2005, p. 186).
+
+For parthood involving one or more varied collections, see gufo:standsInQualifiedParthood.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isSubCollectionOf</IRI>
+        <Literal xml:lang="en">isSubCollectionOf</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>isSubCollectionOf</IRI>
+        <IRI>standsInQualifiedParthood</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isSubQuantityOf</IRI>
+        <Literal xml:lang="en">Identifies a gufo:Quantity of which the quantity is a part.
+
+For example, the quantity of water in a wine glass is a sub-quantity of the wine in that glass.
+
+gufo:isSubQuantityOf is transitive (Guizzardi, 2005, p. 184).
+
+Sub-quantities are always essential parts of their wholes. Thus, gufo:standsInQualifiedParthood is not applicable for sub-quantities.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isSubQuantityOf</IRI>
+        <Literal xml:lang="en">isSubQuantityOf</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>manifestedIn</IRI>
+        <Literal xml:lang="en">Identifies a gufo:Event in which the gufo:Aspect is manifested.
+
+For example, the passing of an electrical current in a conductor is an event that encompasses the manifestation of an aspect inhering in a copper wire (the wire&apos;s  electrical conductivity).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>manifestedIn</IRI>
+        <Literal xml:lang="en">manifestedIn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>mediates</IRI>
+        <Literal xml:lang="en">Identifies the endurants mediated by a gufo:Relator.
+
+For example, John and Mary&apos;s marriage mediates John and Mary.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>mediates</IRI>
+        <Literal xml:lang="en">mediates</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>participatedIn</IRI>
+        <Literal xml:lang="en">Identifies a gufo:Event in which the gufo:Object participated.
+
+Examples include the participation of Freddy Mercury in Queen&apos;s Live Aid Concert and the participation of an airplane in a flight.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>participatedIn</IRI>
+        <Literal xml:lang="en">participatedIn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>partitions</IRI>
+        <Literal xml:lang="en">Identifies a gufo:Type whose instances are classified by exactly one instance of the partitioning higher-order type.
+
+For example, &quot;AnimalSpecies&quot; gufo:partitions &quot;Animal&quot;. Instances of &quot;AnimalSpecies&quot; such as &quot;Lion&quot;, &quot;Hiena&quot; must be disjoint subclasses of &quot;Animal&quot;. OWL 2 punning should be used to capture the two facets of &quot;Lion&quot; and &quot;Hiena&quot; in this example: (i) as instances of &quot;AnimalSpecies&quot;, and (ii) as  subclasses of &quot;Animal&quot;.
+
+Note that the partitioned type (in the example &quot;Animal&quot;) may or may not be declared to be a disjoint union of the explicitly enumerated subclasses (such as &quot;Lion&quot;, &quot;Hiena&quot;). This is because other instances of the higher-order type (&quot;AnimalSpecies&quot;) may exist that are not explicitly enumerated in the ontology.
+
+The partitioned type is termed the &quot;base type&quot; in the &quot;powertype pattern&quot; see Carvalho et al (2017), the higher-order type is often called the &quot;powertype&quot;.  
+
+For further details and formalization of &quot;partitioning&quot;, see Carvalho et al (2017) which combines UFO with MLT (a multi-level modeling theory).  
+
+V. A. Carvalho, J. P. A. Almeida, C. M. Fonseca, and G. Guizzardi, “Multi-level ontology-based conceptual modeling,” Data &amp; Knowledge Engineering, vol. 109, p. 3–24, 2017. &lt;http://dx.doi.org/10.1016/j.datak.2017.03.002&gt;</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>partitions</IRI>
+        <Literal xml:lang="en">partitions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>standsIn</IRI>
+        <Literal xml:lang="en">Identifies a gufo:Situation in which the entity stands. 
+
+This implementation includes sub-properties of gufo:standsIn to identify situations concerning the attribution of (mutable) values to qualities, variable relationships, the instantiation of non-contingent types, temporary parthood and temporary constitution.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>standsIn</IRI>
+        <Literal xml:lang="en">standsIn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>standsInQualifiedAttribution</IRI>
+        <Literal xml:lang="en">Identifies a gufo:QualityValueAttributionSituation in which the endurant stands. The identified gufo:QualityValueAttributionSituation is then used with the gufo:concernsQualityValue data property or the gufo:concernsReifiedQualityValue object property to indicate a quality value attributed to the gufo:Endurant standing in the situation. This forms a pattern to represent that quality values may differ in different situations.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>standsInQualifiedAttribution</IRI>
+        <Literal xml:lang="en">standsInQualifiedAttribution</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>standsInQualifiedAttribution</IRI>
+        <IRI>QualityValueAttributionSituation</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>standsInQualifiedConstitution</IRI>
+        <Literal xml:lang="en">Identifies a gufo:TemporaryConstitutionSituation in which an endurant stands temporarily (as a constituent). The identified gufo:TemporaryConstitutionSituation is further related with an endurant (the whole) through the gufo:concernsConstitutedEndurant object property. This forms a pattern to represent temporary constitution, in which the relationships between constituents and constituted endurant vary in different situations.
+
+Consider, for example, a group of people (understood as a gufo:FixedCollection) constituting a band (understood as a gufo:FunctionalComplex). In this case, any change in the membership of the group (e.g., the replacement of one person) creates a different group of people. Therefore, the band&apos;s constitution can change in time, and the pattern using gufo:TemporaryConstitutionSituation is applicable.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>standsInQualifiedConstitution</IRI>
+        <Literal xml:lang="en">standsInQualifiedConstitution</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>standsInQualifiedConstitution</IRI>
+        <IRI>TemporaryConstitutionSituation</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>standsInQualifiedInstantiation</IRI>
+        <Literal xml:lang="en">Identifies a gufo:TemporaryInstantiationSituation in which the endurant stands. The identified gufo:TemporaryInstantiationSituation is further related with a gufo:NonRigidType through the gufo:concernsNonRigidType object property. This forms a pattern to represent the contigent instantiation of a non-rigid type by the endurant, in which case instantiation may vary in different situations.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>standsInQualifiedInstantiation</IRI>
+        <Literal xml:lang="en">standsInQualifiedInstantiation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>standsInQualifiedInstantiation</IRI>
+        <IRI>TemporaryInstantiationSituation</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>standsInQualifiedParthood</IRI>
+        <Literal xml:lang="en">Identifies a gufo:TemporaryParthoodSituation in which the endurant stands (as a temporary part). The identified gufo:TemporaryParthoodSituation is further related with an endurant (the whole) through the gufo:concernsTemporaryWhole object property. This forms a pattern to represent temporary parthood, in which the relationships between parts and wholes vary in different situations. In particular, this pattern is useful in case parts may be separated from their wholes, attached to other wholes, replaced.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>standsInQualifiedParthood</IRI>
+        <Literal xml:lang="en">standsInQualifiedParthood</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>standsInQualifiedParthood</IRI>
+        <IRI>TemporaryParthoodSituation</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>standsInQualifiedRelationship</IRI>
+        <Literal xml:lang="en">Identifies a gufo:TemporaryRelationshipSituation in which the endurant stands. The identified gufo:TemporaryRelationshipSituation is then used with the gufo:concernsRelatedEndurant and the gufo:concernsRelationshipType object properties to indicate the related element and the type of relationship that applies. This forms a pattern to represent that relationships that may change in different situations. For example, &quot;heavierThan&quot; may change when the objects involved gain or lose weight.
+
+For material relations, prefer the use of gufo:Relator.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>standsInQualifiedRelationship</IRI>
+        <Literal xml:lang="en">standsInQualifiedRelationship</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>standsInQualifiedRelationship</IRI>
+        <IRI>Relator</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>standsInQualifiedRelationship</IRI>
+        <IRI>TemporaryRelationshipSituation</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>wasCreatedIn</IRI>
+        <Literal xml:lang="en">Identifies the gufo:Event which brought the gufo:Endurant into existence. 
+
+For example, a musical piece is created in an act of composition (or in an event that is part of it), a piece of legislation is created in a complex legislative process.
+
+Benevides et al. (2019) only discussed creation of objects; gufo:wasCreatedIn is extended to endurants in general. Further, in that work &quot;createdBy&quot; required the event to &quot;bring about&quot; a situation in which the created object is present. We relax this requirement here, such that the object may be created and terminated in the scope of the identified gufo:Event.
+
+A. B. Benevides, J. R. Bourguet, G. Guizzardi, R. Penãloza, and J. P. A. Almeida, “Representing a reference foundational ontology of events in SROIQ,” Applied ontology, vol. 14, iss. 3, p. 293–334, 2019. &lt;http://dx.doi.org/10.3233/AO-190214&gt;</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>wasCreatedIn</IRI>
+        <Literal xml:lang="en">wasCreatedIn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>wasTerminatedIn</IRI>
+        <Literal xml:lang="en">Identifies the gufo:Event in which the gufo:Endurant was brought to an end. 
+
+For example, the Space Shuttle Challenger (OV-099) (a gufo:FunctionalComplex) was destroyed during the launch of its tenth flight (a gufo:Event). 
+
+Benevides et al. (2019) only discussed termination of objects; gufo:wasCreatedIn is extended to endurants in general. This means that a gufo:Relator (such as a marriage) can be declared terminated. Further, in that work &quot;terminatedBy&quot; required the event to be &quot;triggered&quot; by a situation in which the terminated object is present. We relax this requirement here, such that the object may be created and terminated in the scope of the identified gufo:Event.
+
+A. B. Benevides, J. R. Bourguet, G. Guizzardi, R. Penãloza, and J. P. A. Almeida, “Representing a reference foundational ontology of events in SROIQ,” Applied ontology, vol. 14, iss. 3, p. 293–334, 2019. &lt;http://dx.doi.org/10.3233/AO-190214&gt;</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>wasTerminatedIn</IRI>
+        <Literal xml:lang="en">wasTerminatedIn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>time:Instant</AbbreviatedIRI>
+        <Literal xml:lang="en">An gufo:AbstractIndividual that reifies time instants. It is used as a target of the gufo:hasBeginPoint and gufo:hasEndPoint object properties.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>time:Instant</AbbreviatedIRI>
+        <Literal xml:lang="en">Instant</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
