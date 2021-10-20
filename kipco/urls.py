@@ -1,18 +1,24 @@
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
 from kipco import views
+from bpmn import views as bpmnviews
 
 
 urlpatterns = [
 
+    url(r'^process/owl/$', bpmnviews.flowelementscontainerowl_list),
+    
     url(r'^processgoal/(?P<pk>[0-9]+)/$', views.processgoal_detail),
     url(r'^processgoal/$', views.processgoal_list),
+    url(r'^processgoal/owl/$', views.processgoalowl_list),
 
     url(r'^activity/(?P<pk>[0-9]+)/$', views.activity_detail),
     url(r'^activity/$', views.activity_list),
+    url(r'^activity/owl/$', views.activityowl_list),
 
     url(r'^activitygoal/(?P<pk>[0-9]+)/$', views.activitygoal_detail),
     url(r'^activitygoal/$', views.activitygoal_list),
+    url(r'^activitygoal/owl/$', views.activitygoalowl_list),
 
     url(r'^intention/(?P<pk>[0-9]+)/$', views.intention_detail),
     url(r'^intention/$', views.intention_list),

@@ -9,6 +9,12 @@ class ProcessGoalAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'description')
     search_fields = ('name',)
 
+@admin.register(IntensiveProcess)
+class IntensiveProcessAmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'goal', 'storid')
+    list_filter = ('goal',)
+    search_fields = ('name',)
+
 
 @admin.register(Activity)
 class ActivityAdmin(admin.ModelAdmin):

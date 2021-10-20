@@ -28,14 +28,10 @@ class Activity(FlowNode):
 
 
 class FlowElementsContainer(models.Model):
-    from kipco.models import ProcessGoal
-
     name = models.CharField(max_length=255)
-    goal = models.ForeignKey(ProcessGoal, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.name
-
 
 class Process(FlowElementsContainer):
     pass

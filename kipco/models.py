@@ -1,5 +1,10 @@
 from django.db import models
-from bpmn.models import Activity as BpmnActivity
+from bpmn.models import Activity as BpmnActivity, FlowElementsContainer
+from semantic.models import *
+from owlready2 import *
+
+
+
 
 class ProcessGoal(models.Model):
     name = models.CharField(max_length=100)
@@ -8,9 +13,21 @@ class ProcessGoal(models.Model):
     def __str__(self):
         return self.name
 
+    class Owl(MetaOwl):
+        def __init__(self, clazz):
+            kipo = KipoOntology.getOntology()
+            super().__init__(clazz, kipo.KIPCO__Process_Goal)
+
+class IntensiveProcess(SemanticModel, FlowElementsContainer):
+    semanticClass = KipoOntology.getOntology().KIPCO__Knowledge_Intensive_Process
+    goal = models.ForeignKey(ProcessGoal, on_delete=models.CASCADE, blank=True, null=True)
 
 class Activity(BpmnActivity):
-    pass
+    
+    class Owl(MetaOwl):
+        def __init__(self, clazz):
+            kipo = KipoOntology.getOntology()
+            super().__init__(clazz, kipo.KIPCO__Knowledge_Intensive_Activity)
 
 
 class ActivityGoal(models.Model):
@@ -20,6 +37,11 @@ class ActivityGoal(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Owl(MetaOwl):
+        def __init__(self, clazz):
+            kipo = KipoOntology.getOntology()
+            super().__init__(clazz, kipo.KIPCO__Activity_Goal)
 
 
 class Intention(models.Model):
@@ -29,6 +51,10 @@ class Intention(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Owl():
+        kipo = KipoOntology.getOntology()
+        pass
 
 class Desire(models.Model):
     name = models.CharField(max_length=100)
@@ -63,6 +89,8 @@ class Agent(models.Model):
 
     def __str__(self):
         return self.name
+    class Owl():
+        pass
 
 
 

@@ -47,15 +47,13 @@ class ActivityAdmin(admin.ModelAdmin):
 
 @admin.register(FlowElementsContainer)
 class FlowElementsContainerAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'goal')
-    list_filter = ('goal',)
+    list_display = ('id', 'name')
     search_fields = ('name',)
 
 
 @admin.register(Process)
 class ProcessAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'goal')
-    list_filter = ('goal',)
+    list_display = ('id', 'name')
     search_fields = ('name',)
 
 

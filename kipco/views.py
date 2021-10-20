@@ -19,6 +19,13 @@ def processgoal_list(request):
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
 
+@api_view(['GET'])
+def processgoalowl_list(request):
+    if request.method == 'GET':
+        items = ProcessGoal.Owl().list()
+        serializer = ProcessGoalSerializer(items, many=True)
+        return Response(serializer.data)
+        
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def processgoal_detail(request, pk):
@@ -57,6 +64,12 @@ def activity_list(request):
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
 
+@api_view(['GET'])
+def activityowl_list(request):
+    if request.method == 'GET':
+        items = Activity.Owl().list()
+        serializer = ActivitySerializer(items, many=True)
+        return Response(serializer.data)
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def activity_detail(request, pk):
@@ -95,6 +108,12 @@ def activitygoal_list(request):
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
 
+@api_view(['GET'])
+def activitygoalowl_list(request):
+    if request.method == 'GET':
+        items = ActivityGoal.Owl().list()
+        serializer = ActivityGoalSerializer(items, many=True)
+        return Response(serializer.data)
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def activitygoal_detail(request, pk):
