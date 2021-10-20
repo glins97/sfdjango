@@ -23,7 +23,16 @@
 	"settings": {},
 
 	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [],
+	"extensions": [
+		"ms-azuretools.vscode-docker",
+		"eamodio.gitlens",
+		"ms-kubernetes-tools.vscode-kubernetes-tools",
+		"magicstack.magicpython",
+		"esbenp.prettier-vscode",
+		"ms-python.vscode-pylance",
+		"ms-python.python",
+		"redhat.vscode-yaml"
+	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
