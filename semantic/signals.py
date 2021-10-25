@@ -22,7 +22,7 @@ def pre_save(sender, instance, **kwargs):
                 logger.error(e)
                 raise(e)
             finally:
-                KipoOntology.getWorld().save()
+                KipoOntology.save()
             
         
 @receiver(post_save)
