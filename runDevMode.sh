@@ -3,8 +3,9 @@
 set -e 
 
 echo "Check if database is created..."
-if [ ! -f 'db.sqlite3' ]; then
+if [ ! -f './databases/db.sqlite3' ]; then
     echo "Database is not created....[migrating]"
+    python manage.py shell < ./databases/loadSemanticDatabase.py
     python manage.py migrate;
     python manage.py loaddata seed.json;
     echo "[migrated]"

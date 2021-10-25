@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from owlready2 import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -87,8 +88,7 @@ WSGI_APPLICATION = 'sfdjango2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': BASE_DIR / 'db.sqlite3',
-        'NAME': BASE_DIR / 'semantic.sqlite3',
+        'NAME': BASE_DIR / 'databases' / 'db.sqlite3',
         'OPTIONS': {
             'timeout': 20,
         }
@@ -145,7 +145,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SEMANTIC = {
     'DATABASE' : {
         'TYPE': 'relational',
-        'SOURCE_NAME' : 'default'
+        'NAME' : BASE_DIR / 'databases' / 'semantic.sqlite3',
     },
     'OWL_FILES': {
         'IMPORT_FOLDER': BASE_DIR / './owl_files/',

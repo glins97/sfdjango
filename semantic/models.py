@@ -8,95 +8,56 @@ import rdflib
 import json 
 import time
 import logging
+import threading
 
 logger = logging.getLogger(__name__)
 
 class KipoOntology:
-    __instance = None
-    __kipo = None
-    __world = None
-    
-    @staticmethod
-    def getInstance():
-        if KipoOntology.__instance == None:
-            KipoOntology()
+    _lock = threading.Lock()
+ 
+    @classmethod
+    def loadConfig(cls):
+        with cls._lock:
+            if not hasattr(cls, '_world') or cls._world == None:
+                loaded = False
+                tries = 0
+                while not loaded and tries < 4:
+                    try:
+                        cls._world = World(filename= settings.SEMANTIC["DATABASE"]["NAME"], exclusive=False)
+                        onto_path.append(settings.SEMANTIC["OWL_FILES"]["IMPORT_FOLDER"])
+                        cls._kipo = cls._world.get_ontology(settings.SEMANTIC["OWL_FILES"]["OWL_PATH_FILE"]).load()
+                        cls._world.save()
+                        #sync_reasoner(cls._world)
+                        loaded = cls._kipo.loaded
+                    except Exception as e:
+                        tries += 1
+                        logger.error('Connot load owl file! [Retrying in ' + str(tries*5) + ' sec]')
+                        logger.error(e)
+                        time.sleep(tries*5)
 
-        return KipoOntology.__instance
+    @classmethod
+    def getOntology(cls):
+        if not hasattr(cls, '_kipo'):
+            cls.loadConfig()
+        return cls._kipo
     
-    def __init__(self) -> None:
-        if KipoOntology.__instance == None:
-            KipoOntology.__instance = self
-            loaded = False
-            tries = 0
-            while not loaded and tries < 4:
-                try:
-                    self.__world = World()
-                    onto_path.append(settings.SEMANTIC["OWL_FILES"]["IMPORT_FOLDER"])
-                    #self.setBackEndDatabase(self.__world)
-                    self.__world.set_backend(filename = './semantic.sqlite3', exclusive = False)
-                    print(settings.SEMANTIC["OWL_FILES"]["OWL_PATH_FILE"])
-                    self.__kipo = self.__world.get_ontology(settings.SEMANTIC["OWL_FILES"]["OWL_PATH_FILE"]).load()
-                    self.__world.save()
-                    loaded = True
-                except Exception as e:
-                    tries += 1
-                    logger.error('Connot load owl file! [Retrying in ' + str(tries*5) + ' sec]')
-                    logger.error(e)
-                    time.sleep(tries*5)
-                    pass
-        else:
-            raise Exception("Singleton class")
+    @classmethod
+    def getWorld(cls):
+        if not hasattr(cls, '_world'):
+            cls.loadConfig()
+        return cls._world
+
+    @classmethod
+    def save(cls):
+        world = cls.getWorld()
+        world.save()
+        sync_reasoner(world)
+
     
-    def setBackEndDatabase(self, world) -> None:
-        if settings.SEMANTIC['DATABASE']['TYPE'] == 'relational' :
-            world.set_backend(filename = settings.DATABASES[settings.SEMANTIC['DATABASE']['SOURCE_NAME']]['NAME'], 
-                              exclusive = False)
-
-    @staticmethod
-    def getOntology():
-        kipoInstance = KipoOntology.getInstance()
-        return kipoInstance.__kipo
-    
-    @staticmethod
-    def getWorld():
-        kipoInstance = KipoOntology.getInstance()
-        return kipoInstance.__world
-    
-    @staticmethod
-    def json_for_graph(g):
-        return g.serialize(format='json-ld', indent=4)
-
-class MetaOwl:
-    __owlclass = None
-    __objClass = None
-
-    def __init__(self, objClazz, owlClazz):
-        self.__owlclass = owlClazz
-        self.__objClass = objClazz
-
-    def listObj(self) -> list:
-        lista = []
-        for k in self.listOwl():
-            lista.append(self.owlToObj(k))
-        return lista
-    
-    def listOwl(self) -> list:
-        kipo = KipoOntology.getOntology()
-        lista = kipo.search(type = self.__owlclass)
-        return lista
-
-    def owlToObj(self, owlObj):
-        pg = self.__objClass()
-        pg.name = owlObj.name
-        return pg
-    
-    def objToOwl(self, obj):
-        o = self.__owlclass(obj.name)
-        return o
-
 class SemanticModel(models.Model):
 
-    storid = models.IntegerField(unique=True, blank=True, null=True)
+    storid = models.IntegerField(unique=False, blank=True, null=True)
+    semanticClass = 'Thing'
     
     def listObj(self) -> list:
         lista = []
@@ -106,7 +67,7 @@ class SemanticModel(models.Model):
     
     def listOwl(self) -> list:
         kipo = KipoOntology.getOntology()
-        lista = kipo.search(type = self.semanticClass)
+        lista = kipo.search(type = self.getSemanticClass())
         return lista
 
     def owlToObj(self, owlObj):
@@ -114,23 +75,35 @@ class SemanticModel(models.Model):
         pg.name = owlObj.name
         return pg
     
-    def objToOwl(self, obj):
-        o = self.semanticClass(obj.name)
-        return o
+    def objToOwl(self):
+        kipo = KipoOntology.getOntology()
+        with kipo:
+            o = self.getSemanticClass()(self.name)
+            self.setIndividualProperties(o)
+            KipoOntology.getWorld().save()
+            return o
 
-    def isExistsIndividuals(self) -> bool :
-        if self.getIndividualsByName():
+    def isExistsIndividual(self) -> bool :
+        if self.getIndividual():
             return True
         else:        
             return False
     
-    def getIndividualsByName(self) :
+    def getIndividual(self) :
         kipo = KipoOntology.getOntology()
-        for o in kipo.search(type = self.semanticClass):
+        for o in kipo.search(type = self.getSemanticClass()):
             if o.name == self.name:
                 return o
         return None
 
+    def getSemanticClass(self) :
+        kipo = KipoOntology.getOntology()
+        for i in list(kipo.classes()):
+            if i.name == self.semanticClass:
+                return i
+        return None
     
+    def setIndividualProperties(self, owl) :
+        pass
     class Meta:
         abstract = True
