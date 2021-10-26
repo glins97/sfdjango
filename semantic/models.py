@@ -50,9 +50,15 @@ class KipoOntology:
     @classmethod
     def save(cls):
         world = cls.getWorld()
-        #sync_reasoner_pellet(x = cls._world, infer_property_values=True)
         world.save()
 
+    @classmethod
+    def querySPARQL(cls, query):
+        try:
+            l = cls.getWorld().sparql(query)
+            return list(l)
+        except Exception:
+            return None
     
 class SemanticModel(models.Model):
 
