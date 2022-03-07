@@ -2,7 +2,7 @@ version: "3.8"
 services:
   sfdjango:
     build: .
-    image: unb/sfdjango
+    image: unb/sfdjango:2
     container_name: sfdjango
     ports:
       - "8000:8000"

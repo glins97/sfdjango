@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  sfdjango:
+    extends:
+      file: ./docker-compose.yml
+      service: sfdjango
+    volumes:
+      - .:/usr/src/app:cached
