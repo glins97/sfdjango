@@ -2,6 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from bpmn.models import *
 from bpmn.serializers import *
+from semantic.models import *
 
 
 @api_view(['GET', 'POST'])
@@ -170,6 +171,16 @@ def flowelementscontainer_list(request):
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
 
+@api_view(['GET'])
+def flowelementscontainerowl_list(request):
+    if request.method == 'GET':
+        #items = FlowElementsContainer.Owl(FlowElementsContainer).listObj()
+        #serializer = FlowElementsContainerSerializer(items, many=True)
+        #return Response(serializer.data)
+        #return Response({"Teste":"Teste"})
+        w = KipoOntology.getWorld()
+        g = w.as_rdflib_graph()
+        return Response(KipoOntology.json_for_graph(g))
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def flowelementscontainer_detail(request, pk):

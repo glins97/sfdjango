@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from owlready2 import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,6 +43,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'bpmn', 
     'kipco',
+    'semantic',
+    'agent',
 ]
 
 REST_FRAMEWORK = {
@@ -86,7 +89,10 @@ WSGI_APPLICATION = 'sfdjango2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'databases' / 'db.sqlite3',
+        'OPTIONS': {
+            'timeout': 20,
+        }
     }
 }
 
@@ -133,3 +139,17 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Semantic Module Config
+
+SEMANTIC = {
+    'DATABASE' : {
+        'TYPE': 'relational',
+        'NAME' : BASE_DIR / 'databases' / 'semantic.sqlite3',
+    },
+    'OWL_FILES': {
+        'IMPORT_FOLDER': BASE_DIR / './owl_files/',
+        'OWL_PATH_FILE': 'file:/' + str(BASE_DIR / '/owl_files/kipo_s.owl#')
+    }
+}

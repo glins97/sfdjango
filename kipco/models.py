@@ -1,16 +1,27 @@
 from django.db import models
-from bpmn.models import Activity as BpmnActivity
+from bpmn.models import Activity as BpmnActivity, FlowElementsContainer
+from semantic.models import *
 
-class ProcessGoal(models.Model):
+class ProcessGoal(SemanticModel):
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
+    semanticClass = 'KIPCO__Process_Goal'
 
     def __str__(self):
         return self.name
 
+class IntensiveProcess(SemanticModel, FlowElementsContainer):
+
+    goal = models.ForeignKey(ProcessGoal, on_delete=models.CASCADE, blank=True, null=True)
+    semanticClass = 'KIPCO__Knowledge_Intensive_Process'
+
+    def setIndividualProperties(self, owl):
+        if self.goal and self.goal.getIndividual():
+            owl.has.append(self.goal.getIndividual())
 
 class Activity(BpmnActivity):
-    pass
+    pass    
+
 
 
 class ActivityGoal(models.Model):
@@ -20,7 +31,7 @@ class ActivityGoal(models.Model):
 
     def __str__(self):
         return self.name
-
+    
 
 class Intention(models.Model):
     name = models.CharField(max_length=100)
