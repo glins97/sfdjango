@@ -25,4 +25,5 @@ urlpatterns = [
     path('bpmn/', include('bpmn.urls')),
     path('kipco/', include('kipco.urls')),
     path('semantic/', include('semantic.urls')),
+    path('agent/',  include('agent.urls'))
 ]

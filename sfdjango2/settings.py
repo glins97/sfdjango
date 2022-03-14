@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'bpmn', 
     'kipco',
     'semantic',
+    'agent',
 ]
 
 REST_FRAMEWORK = {
